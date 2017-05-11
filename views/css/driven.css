@@ -1,0 +1,662 @@
+@CHARSET "ISO-8859-1";
+
+.header-img {
+	margin: auto;
+	align: center;
+	border: 2px;
+	border-style: solid transparent;
+	height:  120px;
+	width: 250px;
+}
+
+.header-img-small {
+	margin: auto;
+	align: center;
+	border: 2px;
+	border-style: solid transparent;
+	height:  70px;
+	width: 150px;
+}
+
+.errormessage {
+	margin: auto;
+	text-align: center;
+	font-size: large;
+	font-style: italic;
+	font-weight:  bold;
+	font-family: Verdana, Arial;
+	color: #F90E0E;
+	background-color: white;
+	vertical-align: center;
+	height: 60px;
+}
+
+.apptitle {
+	text-align: center;
+	font-size: large;
+	font-style: italic;
+	font-weight:  bold;
+	font-family: Verdana, Arial;
+	color: #021d47;
+	background-color: white;
+	vertical-align: center;
+	height: 60px;
+}
+
+.logintitle {
+	text-align: center;
+	font-size: large;
+	font-weight: bold;
+	font-family: Verdana, Arial;
+	color: yellow;
+	vertical-align: center;
+	height: 60px;
+}
+
+.loginbody {
+	font-size: medium;
+	font-weight: bold;
+	font-family: Verdana, Arial;
+	width: 180px;
+	vertical-align: middle;
+}
+
+.outerlogintable {
+	margin:  auto;
+	align:  left;
+	border: 2px;
+	border-style: solid;
+	background-color: #0F0859;
+	width: 400px;
+	height: 400px;
+}
+
+.innerlogintable {
+	margin: auto;
+	border: 5px;
+	border-style: solid;
+	border-color: #BA0909;
+	vertical-align: center;
+	background-color: #598BDB;
+	width: 300px;
+	height: 300px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+.loginuname {
+	width: 150px;
+}
+
+.loginpword {
+	width: 150px;
+}
+
+.input-very-short {
+	width: 25px;
+}
+
+.input-very-short2 {
+	width: 40px;
+}
+
+.input-very-short3 {
+	width: 100px;
+}
+
+.input-short {
+	width: 150px;
+}
+
+.input-medium {
+	width: 200px;
+}
+
+.input-long {
+	width: 400px;
+}
+
+.input-amount {
+	width: 90px;
+	text-align: right;
+}
+
+.input-percent {
+	width: 50px;
+	text-align: right;
+}
+
+.loginbutton {
+	margin: auto;
+	width: 90px;
+	height: 30px;
+	align: center;
+	font-weight: bold;
+}
+
+.role-desc {
+	width:  400px;
+}
+
+.logoutbutton {
+	margin: auto;
+	width: 90px;
+	height: 30px;
+	align: center;
+	font-weight: bold;
+}
+
+.cmdbutton-square {
+	margin: auto;
+	width: 28px;
+	height: 20px;
+	align: center;
+}
+
+.cmdbutton-small {
+	margin: auto;
+	width: 70px;
+	height: 20px;
+	align: center;
+}
+
+.cmdbutton {
+	margin: auto;
+	width: 90px;
+	height: 30px;
+	align: center;
+	font-weight: bold;
+}
+
+.cmdbutton2 {
+	margin: auto;
+	width: 130px;
+	height: 30px;
+	align: center;
+	font-weight: bold;
+}
+
+.cmdbutton3 {
+	margin: auto;
+	width: 150px;
+	height: 20px;
+	align: center;
+}
+
+.menubutton {
+	margin: auto;
+	width: 220px;;
+	height: 30px;
+	align: center;
+	font-weight: bold;
+}
+
+.buttonrow {
+	margin: auto;
+	text-align: center;
+	vertical-align: center;
+}
+
+.hompagebody {
+	border: 1px;
+	border-style: solid;
+	background-color: #598BDB;
+	width: 100%;
+	height: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-family: Verdana, Arial;
+	font-size: 12px;
+}
+
+.menu-title {
+	border-color: #000000;
+	background-color: #000000;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  16px;
+	font-weight:  bold;
+	color:  #FFFFFF;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  5px;
+	padding-bottom:  5px;
+}
+
+.menu-main {
+	border-width: 1px;
+	border-style: solid;
+	background-color: grey;
+	margin:  auto;
+	align:  center;
+	width:  100%;
+}
+
+.menu-child-table {
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	background-color: white;
+	margin:  auto;
+	align:  center;
+	width: 100%;
+}
+
+.menu-sales-txn {
+	background-color: #FFFA72;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  14px;
+	font-weight:  bold;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  3px;
+	padding-left:  10px;
+	padding-bottom:  3px;
+}
+
+.menu-collection {
+	background-color: #EDC62A;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  14px;
+	font-weight:  bold;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  3px;
+	padding-left:  10px;
+	padding-bottom:  3px;
+}
+
+.menu-gen-journal {
+	background-color: #BFED29;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  14px;
+	font-weight:  bold;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  3px;
+	padding-left:  10px;
+	padding-bottom:  3px;
+}
+
+.menu-cv {
+	background-color: #3DDBBB;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  14px;
+	font-weight:  bold;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  3px;
+	padding-left:  10px;
+	padding-bottom:  3px;
+}
+
+.menu-cv-others {
+	background-color: #F9C0F3;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  14px;
+	font-weight:  bold;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  3px;
+	padding-left:  10px;
+	padding-bottom:  3px;
+}
+
+.menu-reports {
+	background-color: #75A0EF;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  14px;
+	font-weight:  bold;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  3px;
+	padding-left:  10px;
+	padding-bottom:  3px;
+}
+
+.menu-system-params {
+	background-color: #37EF49;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  14px;
+	font-weight:  bold;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  3px;
+	padding-left:  10px;
+	padding-bottom:  3px;
+}
+
+.main-section {
+	border-color: #000000;
+	background-color: #000000;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  16px;
+	font-weight:  bold;
+	color:  #FFFFFF;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  5px;
+	padding-bottom:  5px;
+}
+
+.main-table {
+	border-collapse:  collapse;
+	border: 1px solid black;
+	width: 100%;
+	cellpadding: 3px;
+	vertical-align: top;
+}
+
+.sub-table {
+	border-collapse:  collapse;
+/*	border: 1px solid black;  */
+	cellpadding: 3px;
+	vertical-align: top;
+}
+
+.main-title {
+	border-color: #000000;
+	background-color: #000000;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  16px;
+	font-weight:  bold;
+	color:  #FFFFFF;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  5px;
+	padding-bottom:  5px;
+	width: 100%;
+}
+
+.main-sub-title {
+	border: 1px solid black;
+	background-color: #AFAFAF;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  14px;
+	font-weight:  bold;
+	color:  #000000;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  5px;
+	padding-bottom:  5px;
+}
+
+.main-sub-title2 {
+	border: 1px solid black;
+	background-color: #67BAF8;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	font-weight:  bold;
+	color:  #000000;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  5px;
+	padding-bottom:  5px;
+}
+
+.main-sub-title-left {
+	border: 1px solid black;
+	background-color: #AFAFAF;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  14px;
+	font-weight:  bold;
+	color:  #000000;
+	text-align:  left;
+	vertical-align:  top;
+	padding-top:  5px;
+	padding-left:  10px;
+	padding-bottom:  5px;
+}
+
+.main-sub-title2 {
+	border: 1px solid black;
+	background-color: #99B78D;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  14px;
+	font-weight:  bold;
+	color:  #000000;
+	text-align:  center;
+	vertical-align:  top;
+	padding-top:  5px;
+	padding-bottom:  5px;
+}
+
+.main-body-text-center {
+	border: 1px solid black;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+}
+
+.main-body-text-right {
+	border: 1px solid black;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  right;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+}
+
+.main-body-text-left {
+	border: 1px solid black;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+
+.main-body-text-center2 {
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+}
+
+.main-body-text-left2 {
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+
+.main-body-text-right2 {
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  right;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+}
+
+.main-body-text-center3 {
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+	font-weight:  bold;
+}
+
+.main-body-text-left3 {
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	font-weight:  bold;
+}
+
+.main-body-text-right3 {
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  right;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+	font-weight:  bold;
+}
+
+.main-body-text-center4 {
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+	font-weight:  bold;
+	color: blue;
+}
+
+.main-body-text-left4 {
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	font-weight:  bold;
+	color: blue;
+}
+
+.main-body-text-right4 {
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  right;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+	font-weight:  bold;
+	color: blue;
+}
+
+.alert-text {
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	font-weight:  bold;
+	color:  #FF0000;
+	padding-left: 10px;
+}
+
+.alert-text2 {
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	font-style:  italic;
+	color:  #FF0000;
+	padding-left: 10px;
+}
+
+.user-list-box {
+	height:  385px;
+	width:  96%;
+	overflow:  auto;
+	background-color:  #FDFFB3;
+	color:  #000000;
+	margin:  auto;
+	align:  center;
+}
+
+.user-list-text-center {
+	border: 1px solid black;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+}
+
+.user-list-text-left {
+	border: 1px solid black;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  12px;
+	text-align:  left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+
+.role-menu-list-box {
+	height:  300px;
+	width:  100%;
+	overflow:  auto;
+	background-color:  #FDFFB3;
+	color:  #000000;
+	margin:  auto;
+	align:  center;
+}
+
+.highlight-row-yellow {
+	background-color:  #FFFFAE;
+}
+
+.highlight-row-yellow2 {
+	background-color:  #FFFF00;
+	text-align: center;
+	vertical-align: top;
+	height: 30px;
+}
+
+.highlight-row-yellow3 {
+	background-color:  #FFFFAE;
+	text-align: center;
+	vertical-align: top;
+	height: 30px;
+}
+
+.highlight-row-blue {
+	background-color:  #BAA0FC;
+}
+
+.account-picker-table {
+	height: 255px;
+	overflow: auto;
+	width: 100%;
+}
+
+.account-picker-list-items {
+	border: 1px solid black;
+	font-family:  Verdana, Arial, Time New Roman;
+	font-size:  10px;
+	text-align:  left;
+	padding-left: 5px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+
