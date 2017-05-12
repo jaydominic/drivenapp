@@ -190,23 +190,23 @@ if ((instring($jsonstr->str_menu_codes, $page_menu_code) == false) && ($jsonstr-
 
 										<tr class="highlight-row-yellow2">
 											<td>
-												<div id="parent_account_tooltip" title="PARENT ACCOUNT">
-													<input type='text' name='parent_account' id='parent_account' class='input-short' disabled><br>
-													<input type='button' id='addParentAcctBtn' value='Select Parent Account' class='cmdbutton3' onclick="pickAcct('<?php echo $login_username ?>','<?php echo $session_id ?>', 'CREDIT')">
+												<div id="cr_parent_account_tooltip" title="PARENT ACCOUNT">
+													<input type='text' name='cr_parent_account' id='cr_parent_account' class='input-short' disabled><br>
+													<input type='button' id='crAddParentAcctBtn' value='Select Parent Account' class='cmdbutton3' onclick="pickAcct('<?php echo $login_username ?>','<?php echo $session_id ?>', 'CREDIT')">
 												</div>
 											</td>
 											<td>
-												<div id="sub_account_tooltip" title="SUB-ACCOUNT">
-													<input type='text' name='sub_account' id='sub_account' class='input-short' disabled><br>
-													<input type='button' id='addSubAcctBtn' value='Select Sub-Account' class='cmdbutton3' onclick="pickSubAcct('<?php echo $login_username ?>', '<?php echo $session_id ?>', document.getElementById('parent_account').value, 'CREDIT')">
+												<div id="cr_sub_account_tooltip" title="SUB-ACCOUNT">
+													<input type='text' name='cr_sub_account' id='cr_sub_account' class='input-short' disabled><br>
+													<input type='button' id='crAddSubAcctBtn' value='Select Sub-Account' class='cmdbutton3' onclick="pickSubAcct('<?php echo $login_username ?>', '<?php echo $session_id ?>', document.getElementById('cr_parent_account').value, 'CREDIT')">
 												</div>
 											</td>
 											<td>
-												<textarea rows="3" cols="20" name='journal_details' id='journal_details'></textarea>
+												<textarea rows="3" cols="20" name='cr_journal_details' id='cr_journal_details'></textarea>
 											</td>
-											<td><input type='text' name='journal_amt' id='journal_amt' value='0.00' class='input-amount' onclick="selectAll('journal_amt')"></td>
+											<td><input type='text' name='cr_journal_amt' id='cr_journal_amt' value='0.00' class='input-amount' onclick="selectAll('journal_amt')"></td>
 											<td>
-												<select name='journal_wtax_type' id='journal_wtax_type' onchange="computeWTAX('CREDIT')">
+												<select name='cr_journal_wtax_type' id='cr_journal_wtax_type' onchange="computeWTAX('CREDIT')">
 													<option value='' selected></option>
 													<option value='0'>0%</option>
 													<option value='1'>1%</option>
@@ -216,18 +216,18 @@ if ((instring($jsonstr->str_menu_codes, $page_menu_code) == false) && ($jsonstr-
 													<option value='15'>15%</option>
 												</select>
 											</td>
-											<td><input type='text' name='journal_wtax' id='journal_wtax' value='0.00' class='input-amount' onclick="selectAll('journal_wtax')"></td>
+											<td><input type='text' name='cr_journal_wtax' id='cr_journal_wtax' value='0.00' class='input-amount' onclick="selectAll('journal_wtax')"></td>
 											<td>
-												<select name='journal_vat_type' id='journal_vat_type' onchange="computeVAT('CREDIT')">
+												<select name='cr_journal_vat_type' id='cr_journal_vat_type' onchange="computeVAT('CREDIT')">
 													<option value='EXEMPT' selected>VAT Exempt</option>
 													<option value='VATREG'>VAT Registered</option>
 													<option value='NONVAT'>Zero-Rated VAT</option>
 												</select>
 											</td>
-											<td><input type='text' name='journal_vat' id='journal_vat' value='0.00' class='input-amount' onclick="selectAll('journal_vat')"></td>
-											<td><input type='text' name='journal_net' id='journal_net' value='0.00' class='input-amount' onclick="selectAll('journal_net')"></td>
+											<td><input type='text' name='cr_journal_vat' id='cr_journal_vat' value='0.00' class='input-amount' onclick="selectAll('journal_vat')"></td>
+											<td><input type='text' name='cr_journal_net' id='cr_journal_net' value='0.00' class='input-amount' onclick="selectAll('journal_net')"></td>
 											<td>
-												<select name='journal_ref_doc' id='journal_ref_doc'>
+												<select name='cr_journal_ref_doc' id='journal_ref_doc'>
 													<option value='NONE' selected>N/A</option>
 													<option value='CA'>Cash Advance</option>
 													<option value='CV'>Check Voucher</option>
@@ -242,38 +242,38 @@ if ((instring($jsonstr->str_menu_codes, $page_menu_code) == false) && ($jsonstr-
 	
 										<tr id="creditEntryRow" class="highlight-row-yellow3" style="display: none;">
 											<td>
-												<div id="parent_acct_tooltip" title="PARENT ACCOUNT">
-													<input type='text' name='parent_acct[]' id='parent_acct' class='input-short' disabled>
+												<div id="cr_parent_acct_tooltip" title="PARENT ACCOUNT">
+													<input type='text' name='cr_parent_acct[]' id='cr_parent_acct' class='input-short' disabled>
 												</div>
 											</td>
 											<td>
-												<div id="sub_acct_tooltip" title="SUB-ACCOUNT">
-													<input type='text' name='sub_acct[]' id='sub_acct' class='input-short' disabled>
+												<div id="cr_sub_acct_tooltip" title="SUB-ACCOUNT">
+													<input type='text' name='cr_sub_acct[]' id='cr_sub_acct' class='input-short' disabled>
 												</div>
 											</td>
 											<td>
-												<textarea rows="3" cols="20" name='jnl_details[]' id='jnl_details' disabled></textarea>
+												<textarea rows="3" cols="20" name='cr_jnl_details[]' id='cr_jnl_details' disabled></textarea>
 											</td>
-											<td><input type='text' name='jnl_amt[]' id='jnl_amt' class='input-amount' disabled></td>
+											<td><input type='text' name='cr_jnl_amt[]' id='cr_jnl_amt' class='input-amount' disabled></td>
 											<td>
-												<input type='text' name='jnl_wtax_type[]' id='jnl_wtax_type' class='input-very-short2' disabled>
+												<input type='text' name='cr_jnl_wtax_type[]' id='cr_jnl_wtax_type' class='input-very-short2' disabled>
 												<br>
-												<input type='text' name='jnl_wtax_type_opt[]' id='jnl_wtax_type_opt' class='input-very-short2'>
+												<input type='text' name='cr_jnl_wtax_type_opt[]' id='cr_jnl_wtax_type_opt' class='input-very-short2'>
 											</td>
-											<td><input type='text' name='jnl_wtax[]' id='jnl_wtax' class='input-amount' disabled></td>
+											<td><input type='text' name='cr_jnl_wtax[]' id='cr_jnl_wtax' class='input-amount' disabled></td>
 											<td>
-												<input type='text' name='jnl_vat_type[]' id='jnl_vat_type' class='input-very-short3' disabled>
+												<input type='text' name='cr_jnl_vat_type[]' id='cr_jnl_vat_type' class='input-very-short3' disabled>
 												<br>
-												<input type='text' name='jnl_vat_type_opt[]' id='jnl_vat_type_opt' class='input-very-short3'>
+												<input type='text' name='cr_jnl_vat_type_opt[]' id='cr_jnl_vat_type_opt' class='input-very-short3'>
 											</td>
-											<td><input type='text' name='jnl_vat[]' id='jnl_vat' class='input-amount' disabled></td>
-											<td><input type='text' name='jnl_net[]' id='jnl_net' class='input-amount' disabled></td>
+											<td><input type='text' name='cr_jnl_vat[]' id='cr_jnl_vat' class='input-amount' disabled></td>
+											<td><input type='text' name='cr_jnl_net[]' id='cr_jnl_net' class='input-amount' disabled></td>
 											<td>
-												<input type='text' name='jnl_ref_doc[]' id='jnl_ref_doc' class='input-very-short3' disabled>
+												<input type='text' name='cr_jnl_ref_doc[]' id='cr_jnl_ref_doc' class='input-very-short3' disabled>
 												<br>
-												<input type='text' name='jnl_ref_doc_opt[]' id='jnl_ref_doc_opt' class='input-very-short3'>
+												<input type='text' name='cr_jnl_ref_doc_opt[]' id='cr_jnl_ref_doc_opt' class='input-very-short3'>
 											</td>
-											<td><input type='button' id='delCreditBtn' value='Remove' class='cmdbutton-small' onclick="delCreditRow(event)"></td>
+											<td><input type='button' id='crDelCreditBtn' value='Remove' class='cmdbutton-small' onclick="delCreditRow(event)"></td>
 										</tr>
 
 										<!-- END: This is where the user-entered data is displayed until it is saved to DB -->
@@ -330,23 +330,23 @@ if ((instring($jsonstr->str_menu_codes, $page_menu_code) == false) && ($jsonstr-
 
 										<tr class="highlight-row-yellow2">
 											<td>
-												<div id="parent_account_tooltip2" title="PARENT ACCOUNT">
-													<input type='text' name='parent_account2' id='parent_account2' class='input-short' disabled><br>
-													<input type='button' id='addParentAcctBtn2' value='Select Parent Account' class='cmdbutton3' onclick="pickAcct('<?php echo $login_username ?>','<?php echo $session_id ?>', 'DEBIT')">
+												<div id="dr_parent_account_tooltip" title="PARENT ACCOUNT">
+													<input type='text' name='dr_parent_account' id='dr_parent_account' class='input-short' disabled><br>
+													<input type='button' id='drAddParentAcctBtn' value='Select Parent Account' class='cmdbutton3' onclick="pickAcct('<?php echo $login_username ?>','<?php echo $session_id ?>', 'DEBIT')">
 												</div>
 											</td>
 											<td>
-												<div id="sub_account_tooltip2" title="SUB-ACCOUNT">
-													<input type='text' name='sub_account2' id='sub_account2' class='input-short' disabled><br>
-													<input type='button' id='addSubAcctBtn2' value='Select Sub-Account' class='cmdbutton3' onclick="pickSubAcct('<?php echo $login_username ?>', '<?php echo $session_id ?>', document.getElementById('parent_account2').value, 'DEBIT')">
+												<div id="dr_sub_account_tooltip" title="SUB-ACCOUNT">
+													<input type='text' name='dr_sub_account' id='dr_sub_account' class='input-short' disabled><br>
+													<input type='button' id='drAddSubAcctBtn' value='Select Sub-Account' class='cmdbutton3' onclick="pickSubAcct('<?php echo $login_username ?>', '<?php echo $session_id ?>', document.getElementById('dr_parent_account').value, 'DEBIT')">
 												</div>
 											</td>
 											<td>
-												<textarea rows="3" cols="20" name='journal_details2' id='journal_details2'></textarea>
+												<textarea rows="3" cols="20" name='dr_journal_details' id='dr_journal_details'></textarea>
 											</td>
-											<td><input type='text' name='journal_amt2' id='journal_amt2' value='0.00' class='input-amount' onclick="selectAll('journal_amt')"></td>
+											<td><input type='text' name='dr_journal_amt' id='dr_journal_amt' value='0.00' class='input-amount' onclick="selectAll('journal_amt')"></td>
 											<td>
-												<select name='journal_wtax_type2' id='journal_wtax_type2' onchange="computeWTAX('DEBIT')">
+												<select name='dr_journal_wtax_type' id='dr_journal_wtax_type' onchange="computeWTAX('DEBIT')">
 													<option value='' selected></option>
 													<option value='0'>0%</option>
 													<option value='1'>1%</option>
@@ -356,24 +356,24 @@ if ((instring($jsonstr->str_menu_codes, $page_menu_code) == false) && ($jsonstr-
 													<option value='15'>15%</option>
 												</select>
 											</td>
-											<td><input type='text' name='journal_wtax2' id='journal_wtax2' value='0.00' class='input-amount' onclick="selectAll('journal_wtax')"></td>
+											<td><input type='text' name='dr_journal_wtax' id='dr_journal_wtax' value='0.00' class='input-amount' onclick="selectAll('journal_wtax')"></td>
 											<td>
-												<select name='journal_vat_type2' id='journal_vat_type2' onchange="computeVAT('DEBIT')">
+												<select name='dr_journal_vat_type' id='dr_journal_vat_type' onchange="computeVAT('DEBIT')">
 													<option value='EXEMPT' selected>VAT Exempt</option>
 													<option value='VATREG'>VAT Registered</option>
 													<option value='NONVAT'>Zero-Rated VAT</option>
 												</select>
 											</td>
-											<td><input type='text' name='journal_vat2' id='journal_vat2' value='0.00' class='input-amount' onclick="selectAll('journal_vat')"></td>
-											<td><input type='text' name='journal_net2' id='journal_net2' value='0.00' class='input-amount' onclick="selectAll('journal_net')"></td>
+											<td><input type='text' name='dr_journal_vat' id='dr_journal_vat' value='0.00' class='input-amount' onclick="selectAll('journal_vat')"></td>
+											<td><input type='text' name='dr_journal_net' id='dr_journal_net' value='0.00' class='input-amount' onclick="selectAll('journal_net')"></td>
 											<td>
-												<select name='journal_ref_doc2' id='journal_ref_doc2'>
+												<select name='dr_journal_ref_doc' id='dr_journal_ref_doc'>
 													<option value='NONE' selected>N/A</option>
 													<option value='CA'>Cash Advance</option>
 													<option value='CV'>Check Voucher</option>
 												</select>
 											</td>
-											<td><input type='button' id='addDebitBtn' value='Add' class='cmdbutton-small' onclick="addDebitRow()"></td>
+											<td><input type='button' id='drAddDebitBtn' value='Add' class='cmdbutton-small' onclick="addDebitRow()"></td>
 										</tr>
 
 										<!-- END: This is where the user enters journal data -->
@@ -382,38 +382,38 @@ if ((instring($jsonstr->str_menu_codes, $page_menu_code) == false) && ($jsonstr-
 	
 										<tr id="debitEntryRow" class="highlight-row-yellow3" style="display: none;">
 											<td>
-												<div id="parent_acct_tooltip2" title="PARENT ACCOUNT">
-													<input type='text' name='parent_acct2[]' id='parent_acct2' class='input-short' disabled>
+												<div id="dr_parent_acct_tooltip" title="PARENT ACCOUNT">
+													<input type='text' name='dr_parent_acct[]' id='dr_parent_acct' class='input-short' disabled>
 												</div>
 											</td>
 											<td>
 												<div id="sub_acct_tooltip2" title="SUB-ACCOUNT">
-													<input type='text' name='sub_acct2[]' id='sub_acct2' class='input-short' disabled>
+													<input type='text' name='dr_sub_acct[]' id='dr_sub_acct' class='input-short' disabled>
 												</div>
 											</td>
 											<td>
-												<textarea rows="3" cols="20" name='jnl_details2[]' id='jnl_details2' disabled></textarea>
+												<textarea rows="3" cols="20" name='dr_jnl_details[]' id='dr_jnl_details' disabled></textarea>
 											</td>
-											<td><input type='text' name='jnl_amt2[]' id='jnl_amt2' class='input-amount' disabled></td>
+											<td><input type='text' name='dr_jnl_amt[]' id='dr_jnl_amt' class='input-amount' disabled></td>
 											<td>
-												<input type='text' name='jnl_wtax_type2[]' id='jnl_wtax_type2' class='input-very-short2' disabled>
+												<input type='text' name='dr_jnl_wtax_type[]' id='dr_jnl_wtax_type' class='input-very-short2' disabled>
 												<br>
-												<input type='text' name='jnl_wtax_type_opt2[]' id='jnl_wtax_type_opt2' class='input-very-short2'>
+												<input type='text' name='dr_jnl_wtax_type_opt[]' id='dr_jnl_wtax_type_opt' class='input-very-short2'>
 											</td>
-											<td><input type='text' name='jnl_wtax2[]' id='jnl_wtax2' class='input-amount' disabled></td>
+											<td><input type='text' name='dr_jnl_wtax[]' id='dr_jnl_wtax' class='input-amount' disabled></td>
 											<td>
-												<input type='text' name='jnl_vat_type2[]' id='jnl_vat_type2' class='input-very-short3' disabled>
+												<input type='text' name='dr_jnl_vat_type[]' id='dr_jnl_vat_type' class='input-very-short3' disabled>
 												<br>
-												<input type='text' name='jnl_vat_type_opt2[]' id='jnl_vat_type_opt2' class='input-very-short3'>
+												<input type='text' name='dr_jnl_vat_type_opt[]' id='dr_jnl_vat_type_opt' class='input-very-short3'>
 											</td>
-											<td><input type='text' name='jnl_vat2[]' id='jnl_vat2' class='input-amount' disabled></td>
-											<td><input type='text' name='jnl_net2[]' id='jnl_net2' class='input-amount' disabled></td>
+											<td><input type='text' name='dr_jnl_vat[]' id='dr_jnl_vat' class='input-amount' disabled></td>
+											<td><input type='text' name='dr_jnl_net[]' id='dr_jnl_net' class='input-amount' disabled></td>
 											<td>
-												<input type='text' name='jnl_ref_doc2[]' id='jnl_ref_doc2' class='input-very-short3' disabled>
+												<input type='text' name='dr_jnl_ref_doc[]' id='dr_jnl_ref_doc' class='input-very-short3' disabled>
 												<br>
-												<input type='text' name='jnl_ref_doc_opt2[]' id='jnl_ref_doc_opt2' class='input-very-short3'>
+												<input type='text' name='dr_jnl_ref_doc_opt[]' id='dr_jnl_ref_doc_opt' class='input-very-short3'>
 											</td>
-											<td><input type='button' id='delDebitBtn' value='Remove' class='cmdbutton-small' onclick="delDebitRow(event)"></td>
+											<td><input type='button' id='drDelDebitBtn' value='Remove' class='cmdbutton-small' onclick="delDebitRow(event)"></td>
 										</tr>
 
 										<!-- END: This is where the user-entered data is displayed until it is saved to DB -->

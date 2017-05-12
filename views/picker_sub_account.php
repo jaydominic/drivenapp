@@ -7,7 +7,7 @@ require_once '../model/get_session_status.php';
 require_once '../model/get_list_sub_account.php';
 
 // define the current php filename
-$thisPage = "parent_account_picker.php";
+$thisPage = basename(__FILE__);
 
 if (!isset($_REQUEST['login_username']) || !isset($_REQUEST['session_id']) || !isset($_REQUEST['parent_account'])) {
 	// incomplete parameters, do not proceed!
