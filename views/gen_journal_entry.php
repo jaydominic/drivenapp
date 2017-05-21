@@ -174,151 +174,10 @@ if ((instring($jsonstr->str_menu_codes, $page_menu_code) == false) && ($jsonstr-
 				<tr>
 					<td width="100%" class='sub-table' colspan="4">
 
-						<!-- BEGIN: CREDIT SECTION -->
-
-						<table class='main-table'>
-							<tr><td class='main-sub-title-left'>A.&nbsp;&nbsp;CREDIT ENTRIES</td></tr>
-							
-							<tr><td>
-							
-								<table class="sub-table" width="100%" border="1">
-									<thead class="highlight-row-blue">
-										<tr>
-											<th class="main-body-text-center">Parent Account</th>
-											<th class="main-body-text-center">Sub-Account</th>
-											<th class="main-body-text-center">Details</th>
-											<th class="main-body-text-center">Amount</th>
-											<th class="main-body-text-center">EWT%</th>
-											<th class="main-body-text-center">EWT Amount</th>
-											<th class="main-body-text-center">VAT Type</th>
-											<th class="main-body-text-center">VAT Amount</th>
-											<th class="main-body-text-center">NET Amount</th>
-											<th class="main-body-text-center">Ref. Doc.</th>
-											<th class="main-body-text-center">Action</th>
-										</tr>
-									</thead>
-									
-									<tbody id="creditEntrySection">
-
-										<!-- BEGIN: This is where the user enters journal data -->
-
-										<tr class="highlight-row-yellow2">
-											<td>
-												<div id="cr_parent_account_tooltip" title="PARENT ACCOUNT">
-													<input type='text' name='cr_parent_account' id='cr_parent_account' class='input-short' readonly><br>
-													<input type='button' id='crAddParentAcctBtn' value='Select Parent Account' class='cmdbutton3' onclick="pickAcct('<?php echo $login_username ?>','<?php echo $session_id ?>', 'CREDIT')">
-												</div>
-											</td>
-											<td>
-												<div id="cr_sub_account_tooltip" title="SUB-ACCOUNT">
-													<input type='text' name='cr_sub_account' id='cr_sub_account' class='input-short' readonly><br>
-													<input type='hidden' name='cr_chart_of_acct_id' id='cr_chart_of_acct_id'>
-													<input type='button' id='crAddSubAcctBtn' value='Select Sub-Account' class='cmdbutton3' onclick="pickSubAcct('<?php echo $login_username ?>', '<?php echo $session_id ?>', document.getElementById('cr_parent_account').value, 'CREDIT')">
-												</div>
-											</td>
-											<td>
-												<textarea rows="3" cols="20" name='cr_journal_details' id='cr_journal_details'></textarea>
-											</td>
-											<td><input type='text' name='cr_journal_amt' id='cr_journal_amt' value='0.00' class='input-amount' onclick="selectAll('journal_amt')" onblur="computeWTAX('CREDIT');computeVAT('CREDIT')"></td>
-											<td>
-												<select name='cr_journal_wtax_type' id='cr_journal_wtax_type' onchange="computeWTAX('CREDIT')">
-													<option value='0' selected>0%</option>
-													<option value='1'>1%</option>
-													<option value='2'>2%</option>
-													<option value='5'>5%</option>
-													<option value='10'>10%</option>
-													<option value='15'>15%</option>
-												</select>
-											</td>
-											<td><input type='text' name='cr_journal_wtax' id='cr_journal_wtax' value='0.00' class='input-amount' onclick="selectAll('journal_wtax')"></td>
-											<td>
-												<select name='cr_journal_vat_type' id='cr_journal_vat_type' onchange="computeVAT('CREDIT')">
-													<option value='EXEMPT' selected>VAT Exempt</option>
-													<option value='VATREG'>VAT Registered</option>
-													<option value='NONVAT'>Zero-Rated VAT</option>
-												</select>
-											</td>
-											<td><input type='text' name='cr_journal_vat' id='cr_journal_vat' value='0.00' class='input-amount' onclick="selectAll('journal_vat')"></td>
-											<td><input type='text' name='cr_journal_net' id='cr_journal_net' value='0.00' class='input-amount' onclick="selectAll('journal_net')"></td>
-											<td>
-												<select name='cr_journal_ref_doc' id='journal_ref_doc'>
-													<option value='NONE' selected>N/A</option>
-													<option value='CA'>Cash Advance</option>
-													<option value='CV'>Check Voucher</option>
-												</select>
-											</td>
-											<td><input type='button' id='addCreditBtn' value='Add' class='cmdbutton-small' onclick="addCreditRow()"></td>
-										</tr>
-
-										<!-- END: This is where the user enters journal data -->
-
-										<!-- BEGIN: This is the template for showing the user-entered journal data -->
-	
-										<tr id="creditEntryRow" class="highlight-row-yellow3" style="display: none;">
-											<td>
-												<div id="cr_parent_acct_tooltip" title="PARENT ACCOUNT">
-													<input type='text' name='cr_parent_acct[]' id='cr_parent_acct' class='input-short' readonly>
-												</div>
-											</td>
-											<td>
-												<div id="cr_sub_acct_tooltip" title="SUB-ACCOUNT">
-													<input type='text' name='cr_sub_acct[]' id='cr_sub_acct' class='input-short' readonly>
-													<input type='hidden' name='cr_coa_id[]' id='cr_coa_id'>
-												</div>
-											</td>
-											<td>
-												<textarea rows="3" cols="20" name='cr_jnl_details[]' id='cr_jnl_details' readonly></textarea>
-											</td>
-											<td><input type='text' name='cr_jnl_amt[]' id='cr_jnl_amt' class='input-amount' readonly></td>
-											<td>
-												<input type='text' name='cr_jnl_wtax_type[]' id='cr_jnl_wtax_type' class='input-very-short2' readonly>
-												<br>
-												<input type='hidden' name='cr_jnl_wtax_type_opt[]' id='cr_jnl_wtax_type_opt' class='input-very-short2'>
-											</td>
-											<td><input type='text' name='cr_jnl_wtax[]' id='cr_jnl_wtax' class='input-amount' readonly></td>
-											<td>
-												<input type='text' name='cr_jnl_vat_type[]' id='cr_jnl_vat_type' class='input-very-short3' readonly>
-												<br>
-												<input type='hidden' name='cr_jnl_vat_type_opt[]' id='cr_jnl_vat_type_opt' class='input-very-short3'>
-											</td>
-											<td><input type='text' name='cr_jnl_vat[]' id='cr_jnl_vat' class='input-amount' readonly></td>
-											<td><input type='text' name='cr_jnl_net[]' id='cr_jnl_net' class='input-amount' readonly></td>
-											<td>
-												<input type='text' name='cr_jnl_ref_doc[]' id='cr_jnl_ref_doc' class='input-very-short3' readonly>
-												<br>
-												<input type='hidden' name='cr_jnl_ref_doc_opt[]' id='cr_jnl_ref_doc_opt' class='input-very-short3'>
-											</td>
-											<td><input type='button' id='crDelCreditBtn' value='Remove' class='cmdbutton-small' onclick="delCreditRow(event)"></td>
-										</tr>
-
-										<!-- END: This is where the user-entered data is displayed until it is saved to DB -->
-
-									</tbody>
-									
-									<tfoot class="main-sub-title2">
-										<tr>
-											<td colspan="3" class="main-body-text-right2">Credit Entry Totals:</td>
-											<td style="align: center;"><input id="cr_total_amt" class="input-amount" value="0.00" readOnly></td>
-											<td>&nbsp;</td>
-											<td style="align: center;"><input id="cr_total_wtax" class="input-amount" value="0.00" readOnly></td>
-											<td>&nbsp;</td>
-											<td style="align: center;"><input id="cr_total_vat" class="input-amount" value="0.00" readOnly></td>
-											<td style="align: center;"><input id="cr_total_net" class="input-amount" value="0.00" readOnly></td>
-											<td>&nbsp;</td>
-											<td></td>
-										</tr>
-									</tfoot>
-								</table>
-							
-							</td></tr>
-						</table>
-
-						<!-- END: CREDIT SECTION -->
-
 						<!-- BEGIN: DEBIT SECTION -->
 
 						<table class='main-table'>
-							<tr><td class='main-sub-title-left'>B.&nbsp;&nbsp;DEBIT ENTRIES</td></tr>
+							<tr><td class='main-sub-title-left'>DEBIT ENTRIES</td></tr>
 
 							<tr><td>
 							
@@ -457,6 +316,146 @@ if ((instring($jsonstr->str_menu_codes, $page_menu_code) == false) && ($jsonstr-
 
 						<!-- END: DEBIT SECTION -->
 
+						<!-- BEGIN: CREDIT SECTION -->
+
+						<table class='main-table'>
+							<tr><td class='main-sub-title-left'>CREDIT ENTRIES</td></tr>
+							
+							<tr><td>
+							
+								<table class="sub-table" width="100%" border="1">
+									<thead class="highlight-row-blue">
+										<tr>
+											<th class="main-body-text-center">Parent Account</th>
+											<th class="main-body-text-center">Sub-Account</th>
+											<th class="main-body-text-center">Details</th>
+											<th class="main-body-text-center">Amount</th>
+											<th class="main-body-text-center">EWT%</th>
+											<th class="main-body-text-center">EWT Amount</th>
+											<th class="main-body-text-center">VAT Type</th>
+											<th class="main-body-text-center">VAT Amount</th>
+											<th class="main-body-text-center">NET Amount</th>
+											<th class="main-body-text-center">Ref. Doc.</th>
+											<th class="main-body-text-center">Action</th>
+										</tr>
+									</thead>
+									
+									<tbody id="creditEntrySection">
+
+										<!-- BEGIN: This is where the user enters journal data -->
+
+										<tr class="highlight-row-yellow2">
+											<td>
+												<div id="cr_parent_account_tooltip" title="PARENT ACCOUNT">
+													<input type='text' name='cr_parent_account' id='cr_parent_account' class='input-short' readonly><br>
+													<input type='button' id='crAddParentAcctBtn' value='Select Parent Account' class='cmdbutton3' onclick="pickAcct('<?php echo $login_username ?>','<?php echo $session_id ?>', 'CREDIT')">
+												</div>
+											</td>
+											<td>
+												<div id="cr_sub_account_tooltip" title="SUB-ACCOUNT">
+													<input type='text' name='cr_sub_account' id='cr_sub_account' class='input-short' readonly><br>
+													<input type='hidden' name='cr_chart_of_acct_id' id='cr_chart_of_acct_id'>
+													<input type='button' id='crAddSubAcctBtn' value='Select Sub-Account' class='cmdbutton3' onclick="pickSubAcct('<?php echo $login_username ?>', '<?php echo $session_id ?>', document.getElementById('cr_parent_account').value, 'CREDIT')">
+												</div>
+											</td>
+											<td>
+												<textarea rows="3" cols="20" name='cr_journal_details' id='cr_journal_details'></textarea>
+											</td>
+											<td><input type='text' name='cr_journal_amt' id='cr_journal_amt' value='0.00' class='input-amount' onclick="selectAll('journal_amt')" onblur="computeWTAX('CREDIT');computeVAT('CREDIT')"></td>
+											<td>
+												<select name='cr_journal_wtax_type' id='cr_journal_wtax_type' onchange="computeWTAX('CREDIT')">
+													<option value='0' selected>0%</option>
+													<option value='1'>1%</option>
+													<option value='2'>2%</option>
+													<option value='5'>5%</option>
+													<option value='10'>10%</option>
+													<option value='15'>15%</option>
+												</select>
+											</td>
+											<td><input type='text' name='cr_journal_wtax' id='cr_journal_wtax' value='0.00' class='input-amount' onclick="selectAll('journal_wtax')"></td>
+											<td>
+												<select name='cr_journal_vat_type' id='cr_journal_vat_type' onchange="computeVAT('CREDIT')">
+													<option value='EXEMPT' selected>VAT Exempt</option>
+													<option value='VATREG'>VAT Registered</option>
+													<option value='NONVAT'>Zero-Rated VAT</option>
+												</select>
+											</td>
+											<td><input type='text' name='cr_journal_vat' id='cr_journal_vat' value='0.00' class='input-amount' onclick="selectAll('journal_vat')"></td>
+											<td><input type='text' name='cr_journal_net' id='cr_journal_net' value='0.00' class='input-amount' onclick="selectAll('journal_net')"></td>
+											<td>
+												<select name='cr_journal_ref_doc' id='journal_ref_doc'>
+													<option value='NONE' selected>N/A</option>
+													<option value='CA'>Cash Advance</option>
+													<option value='CV'>Check Voucher</option>
+												</select>
+											</td>
+											<td><input type='button' id='addCreditBtn' value='Add' class='cmdbutton-small' onclick="addCreditRow()"></td>
+										</tr>
+
+										<!-- END: This is where the user enters journal data -->
+
+										<!-- BEGIN: This is the template for showing the user-entered journal data -->
+	
+										<tr id="creditEntryRow" class="highlight-row-yellow3" style="display: none;">
+											<td>
+												<div id="cr_parent_acct_tooltip" title="PARENT ACCOUNT">
+													<input type='text' name='cr_parent_acct[]' id='cr_parent_acct' class='input-short' readonly>
+												</div>
+											</td>
+											<td>
+												<div id="cr_sub_acct_tooltip" title="SUB-ACCOUNT">
+													<input type='text' name='cr_sub_acct[]' id='cr_sub_acct' class='input-short' readonly>
+													<input type='hidden' name='cr_coa_id[]' id='cr_coa_id'>
+												</div>
+											</td>
+											<td>
+												<textarea rows="3" cols="20" name='cr_jnl_details[]' id='cr_jnl_details' readonly></textarea>
+											</td>
+											<td><input type='text' name='cr_jnl_amt[]' id='cr_jnl_amt' class='input-amount' readonly></td>
+											<td>
+												<input type='text' name='cr_jnl_wtax_type[]' id='cr_jnl_wtax_type' class='input-very-short2' readonly>
+												<br>
+												<input type='hidden' name='cr_jnl_wtax_type_opt[]' id='cr_jnl_wtax_type_opt' class='input-very-short2'>
+											</td>
+											<td><input type='text' name='cr_jnl_wtax[]' id='cr_jnl_wtax' class='input-amount' readonly></td>
+											<td>
+												<input type='text' name='cr_jnl_vat_type[]' id='cr_jnl_vat_type' class='input-very-short3' readonly>
+												<br>
+												<input type='hidden' name='cr_jnl_vat_type_opt[]' id='cr_jnl_vat_type_opt' class='input-very-short3'>
+											</td>
+											<td><input type='text' name='cr_jnl_vat[]' id='cr_jnl_vat' class='input-amount' readonly></td>
+											<td><input type='text' name='cr_jnl_net[]' id='cr_jnl_net' class='input-amount' readonly></td>
+											<td>
+												<input type='text' name='cr_jnl_ref_doc[]' id='cr_jnl_ref_doc' class='input-very-short3' readonly>
+												<br>
+												<input type='hidden' name='cr_jnl_ref_doc_opt[]' id='cr_jnl_ref_doc_opt' class='input-very-short3'>
+											</td>
+											<td><input type='button' id='crDelCreditBtn' value='Remove' class='cmdbutton-small' onclick="delCreditRow(event)"></td>
+										</tr>
+
+										<!-- END: This is where the user-entered data is displayed until it is saved to DB -->
+
+									</tbody>
+									
+									<tfoot class="main-sub-title2">
+										<tr>
+											<td colspan="3" class="main-body-text-right2">Credit Entry Totals:</td>
+											<td style="align: center;"><input id="cr_total_amt" class="input-amount" value="0.00" readOnly></td>
+											<td>&nbsp;</td>
+											<td style="align: center;"><input id="cr_total_wtax" class="input-amount" value="0.00" readOnly></td>
+											<td>&nbsp;</td>
+											<td style="align: center;"><input id="cr_total_vat" class="input-amount" value="0.00" readOnly></td>
+											<td style="align: center;"><input id="cr_total_net" class="input-amount" value="0.00" readOnly></td>
+											<td>&nbsp;</td>
+											<td></td>
+										</tr>
+									</tfoot>
+								</table>
+							
+							</td></tr>
+						</table>
+
+						<!-- END: CREDIT SECTION -->
 
 					</td>
 				</tr>
