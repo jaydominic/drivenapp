@@ -34,6 +34,7 @@ if (!isset($_REQUEST['login_username']) || !isset($_REQUEST['session_id']) || !i
 	/*
 	 * This function will return an array object containing the following fields:
 	 *
+	 * coa_id
 	 * coa_sub_account
 	 * coa_parent_account
 	 * coa_account_no
@@ -69,13 +70,15 @@ if (!isset($_REQUEST['login_username']) || !isset($_REQUEST['session_id']) || !i
 							<tbody>
 <?php 
 	for ($i=0; $i<$row1; $i++) {
+		$sub_acct = $list_sub_account[$i]['coa_sub_account'];
+		$coa_id = $list_sub_account[$i]['coa_id'];
 ?>
 								<tr>
 									<td class="account-picker-list-items">
-										<?php echo $list_sub_account[$i]['coa_sub_account'] ?>
+										<?php echo $sub_acct ?>
 									</td>
 									<td class="account-picker-list-items">
-										<input type="button" value="Select" id="cmdSelect" class="cmdbutton-small" onclick="setPickedSubAcct('<?php echo $list_sub_account[$i]['coa_sub_account'] ?>', '<?php echo $section ?>')">
+										<input type="button" value="Select" id="cmdSelect" class="cmdbutton-small" onclick="setPickedSubAcct('<?php echo $sub_acct ?>', '<?php echo $coa_id ?>', '<?php echo $section ?>')">
 									</td>
 								</tr>
 <?php 
