@@ -658,5 +658,19 @@
     visibility: visible;
 }
 
+#livesearch {
+	position: absolute;  
+/*	left: 50px;  */
+/*	top: 100px;  */
+/*	border: 2px solid black;  */
+	width: 200px;
+	background-color: #E2EDFF;
+}
+
+.journal-entry-selection {
+	overflow: auto;
+	height: 150px;
+	width: 100%;
+}
 
 

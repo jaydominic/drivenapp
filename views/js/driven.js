@@ -51,7 +51,7 @@ function changeScreen(fname, mcode) {
 function updateData(calling_page, target_url, operation) {
 	
 	// customize the data validation based on the calling_page value
-	// MANAGE_USER_ROLES.PHP
+	// MANAGE_USER_ROLES.PHP  =======================================================
 	if (calling_page == "manage_user_roles.php") {
 
 		if (operation == "DISABLE") {
@@ -92,7 +92,7 @@ function updateData(calling_page, target_url, operation) {
 				
 	}
 	
-	// MANAGE_USERS.PHP
+	// MANAGE_USERS.PHP  =====================================================
 	if (calling_page == "manage_users.php") {
 
 		if (operation == "DISABLE") {
@@ -131,10 +131,11 @@ function updateData(calling_page, target_url, operation) {
 		}
 	}
 
-	// GEN_JOURNAL_ENTRY.PHP
+	// GEN_JOURNAL_ENTRY.PHP  ===================================================
 	if (calling_page == "gen_journal_entry.php") {
-/*		
+
 		if (operation == "INSERT") {
+			// check the journal header data for completeness
 			if (document.getElementById("journal_reference_id").value == "") {
 				alert("Journal reference ID is required.");
 				document.getElementById("journal_reference_id").focus();
@@ -170,11 +171,25 @@ function updateData(calling_page, target_url, operation) {
 				document.getElementById("journal_txn_class").focus();
 				return false;
 			}
-			document.getElementById("cmdSubmit").disabled = true;
+			// check if there are credit and debit entries
+			if (document.getElementById("cr_total_amt").value == 0) {
+				alert("Zero credit total amount found. Please check your credit entries.");
+				return false;
+			}
+			if (document.getElementById("dr_total_amt").value == 0) {
+				alert("Zero debit total amount found. Please check your debit entries.");
+				return false;
+			}
+			// check if the total Credit and Debit amounts are EQUAL
+			if (document.getElementById("cr_total_amt").value != document.getElementById("dr_total_amt").value) {
+				alert("The Total credit amount is not equal to the total debit amount.");
+				return false;
+			}
+			
 		}
-*/		
 	}
-		
+
+	document.getElementById("cmdSubmit").disabled = true;
 	document.getElementById("operation").value = operation;
 	document.getElementById("frmMain").method = "post";
 	document.getElementById("frmMain").action = target_url;
@@ -541,17 +556,17 @@ function pickAcct(login_username, session_id, section) {
 function setPickedAcct(parent_account_name, section) {
 	// alert("setPickedAcct()=" + section);
 	if (section == "CREDIT" || section == null) {  // CREDIT section
-		window.opener.document.getElementById('parent_account').value = parent_account_name;
-		window.opener.document.getElementById('parent_account_tooltip').title = parent_account_name;
+		window.opener.document.getElementById('cr_parent_account').value = parent_account_name;
+		window.opener.document.getElementById('cr_parent_account_tooltip').title = parent_account_name;
 		// reset the value of sub-account field
-		window.opener.document.getElementById('sub_account').value = "";
-		window.opener.document.getElementById('sub_account_tooltip').title = "SUB-ACCOUNT";
+		window.opener.document.getElementById('cr_sub_account').value = "";
+		window.opener.document.getElementById('cr_sub_account_tooltip').title = "SUB-ACCOUNT";
 	} else {  // DEBIT section
-		window.opener.document.getElementById('parent_account2').value = parent_account_name;
-		window.opener.document.getElementById('parent_account_tooltip2').title = parent_account_name;
+		window.opener.document.getElementById('dr_parent_account').value = parent_account_name;
+		window.opener.document.getElementById('dr_parent_account_tooltip').title = parent_account_name;
 		// reset the value of sub-account field
-		window.opener.document.getElementById('sub_account2').value = "";
-		window.opener.document.getElementById('sub_account_tooltip2').title = "SUB-ACCOUNT";
+		window.opener.document.getElementById('dr_sub_account').value = "";
+		window.opener.document.getElementById('dr_sub_account_tooltip').title = "SUB-ACCOUNT";
 	}
 	window.close();
 }
@@ -566,12 +581,12 @@ var subAcctPickerWin = null;  // global variable to store the name of the parent
 
 function pickSubAcct(login_username, session_id, parent_account, section) {
 	if(section == "CREDIT") {
-		if(document.getElementById("parent_account").value == "") {
+		if(document.getElementById("cr_parent_account").value == "") {
 			alert("Please select the parent account first.");
 			return false;
 		}
 	} else {  // DEBIT
-		if(document.getElementById("parent_account2").value == "") {
+		if(document.getElementById("dr_parent_account").value == "") {
 			alert("Please select the parent account first.");
 			return false;
 		}
@@ -580,14 +595,16 @@ function pickSubAcct(login_username, session_id, parent_account, section) {
 	subAcctPickerWin = window.open(vURL, "parentAcctPicker", "height=350, width=600, resizable=no, menubar=no, status=no, toolbar=no");
 }
 
-function setPickedSubAcct(sub_account_name, section) {
+function setPickedSubAcct(sub_account_name, coa_id, section) {
 	// alert(section);
 	if (section == "CREDIT" || section == null) {
-		window.opener.document.getElementById('sub_account').value = sub_account_name;
-		window.opener.document.getElementById('sub_account_tooltip').title = sub_account_name;
+		window.opener.document.getElementById('cr_sub_account').value = sub_account_name;
+		window.opener.document.getElementById('cr_chart_of_acct_id').value = coa_id;
+		window.opener.document.getElementById('cr_sub_account_tooltip').title = sub_account_name;
 	} else {
-		window.opener.document.getElementById('sub_account2').value = sub_account_name;
-		window.opener.document.getElementById('sub_account_tooltip2').title = sub_account_name;
+		window.opener.document.getElementById('dr_sub_account').value = sub_account_name;
+		window.opener.document.getElementById('dr_chart_of_acct_id').value = coa_id;
+		window.opener.document.getElementById('dr_sub_account_tooltip').title = sub_account_name;
 	}
 	window.close();
 }
@@ -614,30 +631,43 @@ function closeAcctWindows() {
 function addCreditRow() {
 	
 	// check first if all the required input is there
-	if (document.getElementById("parent_account").value == "") {
+	if (document.getElementById("cr_parent_account").value == "") {
 		alert("Please select a parent account.");
 		return false;
 	}
-	if (document.getElementById("sub_account").value == "") {
+	if (document.getElementById("cr_sub_account").value == "") {
 		alert("Please select a sub-account.");
 		return false;
 	}
-	if (document.getElementById("journal_details").value == "") {
+	if (document.getElementById("cr_journal_details").value == "") {
 		alert("Please enter the credit entry details.");
-		document.getElementById("journal_details").focus();
+		document.getElementById("cr_journal_details").focus();
 		return false;
 	}
-	if (isNaN(document.getElementById("journal_amt").value)==true || (parseFloat(document.getElementById("journal_amt").value) == 0)) {
-		alert("Please enter the credit entry amount.");
-		document.getElementById("journal_amt").select();
-		document.getElementById("journal_amt").focus();
+	if (isNaN(document.getElementById("cr_journal_amt").value)==true) {
+		alert("Please enter the journal entry amount to credit.");
+		document.getElementById("cr_journal_amt").value = "";
+		document.getElementById("cr_journal_amt").focus();
 		return false;
 	}
-	if (document.getElementById("journal_vat_type").selectedIndex == 0) {
+	if (parseFloat(document.getElementById("cr_journal_amt").value) == 0) {
+		alert("Please enter a non-zero amount in the credit entry amount.");
+		document.getElementById("cr_journal_amt").value = "";
+		document.getElementById("cr_journal_amt").focus();
+		return false;
+	}
+	/*
+	if (document.getElementById("cr_journal_wtax_type").selectedIndex == 0) {
 		alert("Please select the credit entry EWT%.");
-		document.getElementById("journal_vat_type").focus();
+		document.getElementById("cr_journal_wtax_type").focus();
 		return false;
 	}
+	if (document.getElementById("cr_journal_vat_type").selectedIndex == 0) {
+		alert("Please select the credit entry VAT type.");
+		document.getElementById("cr_journal_vat_type").focus();
+		return false;
+	}
+	*/
 	
 	// get the current number of credit entry rows we have
 	var crRowCtr = parseInt(document.getElementById("creditRowCtr").value);
@@ -650,76 +680,84 @@ function addCreditRow() {
 	document.getElementById("creditRowCtr").value = crRowCtr;
 	// copy all the values of the credit entry row into the new node, and reset the data entry input fields
 	
-	var x = document.getElementById("parent_account");
+	var x = document.getElementById("cr_parent_account");
 	newNode.children[0].children[0].children[0].setAttribute("value", x.value);
 	x.value = "";
 	
-	x = document.getElementById("sub_account");
+	x = document.getElementById("cr_sub_account");
 	newNode.children[1].children[0].children[0].setAttribute("value", x.value);
 	x.value = "";
 	
-	x = document.getElementById("journal_details");
+	x = document.getElementById("cr_chart_of_acct_id");
+	newNode.children[1].children[0].children[1].setAttribute("value", x.value);
+	x.value = "";
+	
+	x = document.getElementById("cr_journal_details");
 	// newNode.children[2].children[0].setAttribute("value", x.value);
 	newNode.children[2].children[0].value = x.value;
 	x.value = "";
-	newNode.children[2].children[0].setAttribute("id", "jnl_details" + crRowCtr);
+	newNode.children[2].children[0].setAttribute("id", "cr_jnl_details" + crRowCtr);
 	
-	x = document.getElementById("journal_amt");
+	x = document.getElementById("cr_journal_amt");
 	var y = x.value; // save the journal_amt for subtotals
 	newNode.children[3].children[0].setAttribute("value", x.value);
 	x.value = "0.00";
-	newNode.children[3].children[0].setAttribute("id", "jnl_amt" + crRowCtr);
+	newNode.children[3].children[0].setAttribute("id", "cr_jnl_amt" + crRowCtr);
 	// update the total for credit amount
 	x = document.getElementById("cr_total_amt");  // get the current value of the subtotal
-	x.value = parseFloat(x.value) + parseFloat(y);  // update the subtotal value
+	var z = parseFloat(x.value) + parseFloat(y);  // update the subtotal value
+	x.value = z.toFixed(2);
 	
-	x = document.getElementById("journal_wtax_type");
+	x = document.getElementById("cr_journal_wtax_type");
 	newNode.children[4].children[0].setAttribute("value", x.options[x.selectedIndex].innerHTML);
 	newNode.children[4].children[2].setAttribute("value", x.options[x.selectedIndex].value);
 	x.selectedIndex = 0;
-	newNode.children[4].children[0].setAttribute("id", "jnl_wtax_type" + crRowCtr);
+	newNode.children[4].children[0].setAttribute("id", "cr_jnl_wtax_type" + crRowCtr);
 
-	x = document.getElementById("journal_wtax");
+	x = document.getElementById("cr_journal_wtax");
 	y = x.value;
 	newNode.children[5].children[0].setAttribute("value", x.value);
 	x.value = "0.00";
-	newNode.children[5].children[0].setAttribute("id", "jnl_wtax" + crRowCtr);
+	newNode.children[5].children[0].setAttribute("id", "cr_jnl_wtax" + crRowCtr);
 	// update the total for W/Tax amount
 	x = document.getElementById("cr_total_wtax");
-	x.value = parseFloat(x.value) + parseFloat(y);
-
-	x = document.getElementById("journal_vat_type");
+	z = parseFloat(x.value) + parseFloat(y);
+	x.value = z.toFixed(2);
+	
+	x = document.getElementById("cr_journal_vat_type");
 	newNode.children[6].children[0].setAttribute("value", x.options[x.selectedIndex].innerHTML);
 	newNode.children[6].children[2].setAttribute("value", x.options[x.selectedIndex].value);
 	x.selectedIndex = 0;
-	newNode.children[6].children[0].setAttribute("id", "jnl_vat_type" + crRowCtr);
+	newNode.children[6].children[0].setAttribute("id", "cr_jnl_vat_type" + crRowCtr);
 
-	x = document.getElementById("journal_vat");
+	x = document.getElementById("cr_journal_vat");
 	y = x.value;
 	newNode.children[7].children[0].setAttribute("value", x.value);
 	x.value = "0.00";
-	newNode.children[7].children[0].setAttribute("id", "jnl_vat" + crRowCtr);
+	newNode.children[7].children[0].setAttribute("id", "cr_jnl_vat" + crRowCtr);
 	// update the total for VAT amount
 	x = document.getElementById("cr_total_vat");
-	x.value = parseFloat(x.value) + parseFloat(y);
-
-	x = document.getElementById("journal_net");
+	z = parseFloat(x.value) + parseFloat(y);
+	x.value = z.toFixed(2);
+	
+	x = document.getElementById("cr_journal_net");
 	y = x.value;
 	newNode.children[8].children[0].setAttribute("value", x.value);
 	x.value = "0.00";
-	newNode.children[8].children[0].setAttribute("id", "jnl_net" + crRowCtr);
+	newNode.children[8].children[0].setAttribute("id", "cr_jnl_net" + crRowCtr);
 	// update the total for NET amount
 	x = document.getElementById("cr_total_net");
-	x.value = parseFloat(x.value) + parseFloat(y);	
+	z = parseFloat(x.value) + parseFloat(y);	
+	x.value = z.toFixed(2);
 	
 	x = document.getElementById("journal_ref_doc");
 	y = x.value;
 	newNode.children[9].children[0].setAttribute("value", x.options[x.selectedIndex].innerHTML);
 	newNode.children[9].children[2].setAttribute("value", x.options[x.selectedIndex].value);
 	x.selectedIndex = 0;
-	newNode.children[9].children[0].setAttribute("id", "jnl_ref_doc" + crRowCtr);
+	newNode.children[9].children[0].setAttribute("id", "cr_jnl_ref_doc" + crRowCtr);
 	
-	newNode.children[10].children[0].setAttribute("id", "delCreditBtn" + crRowCtr);
+	newNode.children[10].children[0].setAttribute("id", "crDelCreditBtn" + crRowCtr);
 	// attach the new node to the parent node
 	targetNode.parentNode.appendChild(newNode);
 	newNode.style.display = "table-row";  // make the node visible
@@ -735,10 +773,17 @@ function delCreditRow(event) {
 	var cr_net = event.currentTarget.parentNode.previousElementSibling.previousElementSibling.children[0].value;  // value of NET amount
 
 	// update the credit totals
-	document.getElementById("cr_total_amt").value = parseFloat(document.getElementById("cr_total_amt").value) - parseFloat(cr_amt);
-	document.getElementById("cr_total_wtax").value = parseFloat(document.getElementById("cr_total_wtax").value) - parseFloat(cr_wtax);
-	document.getElementById("cr_total_vat").value = parseFloat(document.getElementById("cr_total_vat").value) - parseFloat(cr_vat);
-	document.getElementById("cr_total_net").value = parseFloat(document.getElementById("cr_total_net").value) - parseFloat(cr_net);
+	var tmpAmount = parseFloat(document.getElementById("cr_total_amt").value) - parseFloat(cr_amt);
+	document.getElementById("cr_total_amt").value = tmpAmount.toFixed(2);
+	
+	tmpAmount = parseFloat(document.getElementById("cr_total_wtax").value) - parseFloat(cr_wtax);
+	document.getElementById("cr_total_wtax").value = tmpAmount.toFixed(2);
+	
+	tmpAmount = parseFloat(document.getElementById("cr_total_vat").value) - parseFloat(cr_vat);
+	document.getElementById("cr_total_vat").value = tmpAmount.toFixed(2);
+	
+	tmpAmount = parseFloat(document.getElementById("cr_total_net").value) - parseFloat(cr_net);
+	document.getElementById("cr_total_net").value = tmpAmount.toFixed(2);
 	
 	// remove the credit row entry
 	var targetChild = document.getElementById(event.currentTarget.parentNode.parentNode.id);
@@ -756,30 +801,43 @@ function delCreditRow(event) {
 function addDebitRow() {
 	
 	// check first if all the required input is there
-	if (document.getElementById("parent_account2").value == "") {
+	if (document.getElementById("dr_parent_account").value == "") {
 		alert("Please select a parent account.");
 		return false;
 	}
-	if (document.getElementById("sub_account2").value == "") {
+	if (document.getElementById("dr_sub_account").value == "") {
 		alert("Please select a sub-account.");
 		return false;
 	}
-	if (document.getElementById("journal_details2").value == "") {
+	if (document.getElementById("dr_journal_details").value == "") {
 		alert("Please enter the debit entry details.");
-		document.getElementById("journal_details2").focus();
+		document.getElementById("dr_journal_details").focus();
 		return false;
 	}
-	if (isNaN(document.getElementById("journal_amt2").value)==true || (parseFloat(document.getElementById("journal_amt2").value) == 0)) {
-		alert("Please enter the debit entry amount.");
-		document.getElementById("journal_amt2").select();
-		document.getElementById("journal_amt2").focus();
+	if (isNaN(document.getElementById("dr_journal_amt").value)) {
+		alert("Please enter the journal entry amount to debit.");
+		document.getElementById("dr_journal_amt").value = "";
+		document.getElementById("dr_journal_amt").focus();
 		return false;
 	}
-	if (document.getElementById("journal_vat_type2").selectedIndex == 0) {
+	if (parseFloat(document.getElementById("dr_journal_amt").value) == 0) {
+		alert("Please enter a non-zero amount for the debit entry amount.");
+		document.getElementById("dr_journal_amt").value = "";
+		document.getElementById("dr_journal_amt").focus();
+		return false;
+	}
+	/*
+	if (document.getElementById("dr_journal_wtax_type").selectedIndex == 0) {
 		alert("Please select the debit entry EWT%.");
-		document.getElementById("journal_vat_type2").focus();
+		document.getElementById("dr_journal_wtax_type").focus();
 		return false;
 	}
+	if (document.getElementById("dr_journal_vat_type").selectedIndex == 0) {
+		alert("Please select the debit entry VAT type.");
+		document.getElementById("dr_journal_vat_type").focus();
+		return false;
+	}
+	*/
 	
 	// get the current number of debit entry rows we have
 	var drRowCtr = parseInt(document.getElementById("debitRowCtr").value);
@@ -792,75 +850,83 @@ function addDebitRow() {
 	document.getElementById("debitRowCtr").value = drRowCtr;
 	// copy all the values of the debit entry row into the new node, and reset the data entry input fields
 	
-	var x = document.getElementById("parent_account2");
+	var x = document.getElementById("dr_parent_account");
 	newNode.children[0].children[0].children[0].setAttribute("value", x.value);
 	x.value = "";
 	
-	x = document.getElementById("sub_account2");
+	x = document.getElementById("dr_sub_account");
 	newNode.children[1].children[0].children[0].setAttribute("value", x.value);
 	x.value = "";
 	
-	x = document.getElementById("journal_details2");
+	x = document.getElementById("dr_chart_of_acct_id");
+	newNode.children[1].children[0].children[1].setAttribute("value", x.value);
+	x.value = "";
+	
+	x = document.getElementById("dr_journal_details");
 	newNode.children[2].children[0].value = x.value;
 	x.value = "";
-	newNode.children[2].children[0].setAttribute("id", "jnl_details2" + drRowCtr);
+	newNode.children[2].children[0].setAttribute("id", "dr_jnl_details" + drRowCtr);
 	
-	x = document.getElementById("journal_amt2");
-	var y = x.value; // save the journal_amt2 for subtotals
+	x = document.getElementById("dr_journal_amt");
+	var y = x.value; // save the dr_journal_amt for subtotals
 	newNode.children[3].children[0].setAttribute("value", x.value);
 	x.value = "0.00";
-	newNode.children[3].children[0].setAttribute("id", "jnl_amt2" + drRowCtr);
+	newNode.children[3].children[0].setAttribute("id", "dr_jnl_amt" + drRowCtr);
 	// update the total for debit amount
 	x = document.getElementById("dr_total_amt");  // get the current value of the subtotal
-	x.value = parseFloat(x.value) + parseFloat(y);  // update the subtotal value
+	var z = parseFloat(x.value) + parseFloat(y);  // update the subtotal value
+	x.value = z.toFixed(2);
 	
-	x = document.getElementById("journal_wtax_type2");
+	x = document.getElementById("dr_journal_wtax_type");
 	newNode.children[4].children[0].setAttribute("value", x.options[x.selectedIndex].innerHTML);
 	newNode.children[4].children[2].setAttribute("value", x.options[x.selectedIndex].value);
 	x.selectedIndex = 0;
-	newNode.children[4].children[0].setAttribute("id", "jnl_wtax_type2" + drRowCtr);
+	newNode.children[4].children[0].setAttribute("id", "dr_jnl_wtax_type" + drRowCtr);
 
-	x = document.getElementById("journal_wtax2");
+	x = document.getElementById("dr_journal_wtax");
 	y = x.value;
 	newNode.children[5].children[0].setAttribute("value", x.value);
 	x.value = "0.00";
-	newNode.children[5].children[0].setAttribute("id", "jnl_wtax2" + drRowCtr);
+	newNode.children[5].children[0].setAttribute("id", "dr_jnl_wtax" + drRowCtr);
 	// update the total for W/Tax amount
 	x = document.getElementById("dr_total_wtax");
-	x.value = parseFloat(x.value) + parseFloat(y);
+	z = parseFloat(x.value) + parseFloat(y);
+	x.value = z.toFixed(2);
 
-	x = document.getElementById("journal_vat_type2");
+	x = document.getElementById("dr_journal_vat_type");
 	newNode.children[6].children[0].setAttribute("value", x.options[x.selectedIndex].innerHTML);
 	newNode.children[6].children[2].setAttribute("value", x.options[x.selectedIndex].value);
 	x.selectedIndex = 0;
-	newNode.children[6].children[0].setAttribute("id", "jnl_vat_type2" + drRowCtr);
+	newNode.children[6].children[0].setAttribute("id", "dr_jnl_vat_type" + drRowCtr);
 
-	x = document.getElementById("journal_vat2");
+	x = document.getElementById("dr_journal_vat");
 	y = x.value;
 	newNode.children[7].children[0].setAttribute("value", x.value);
 	x.value = "0.00";
-	newNode.children[7].children[0].setAttribute("id", "jnl_vat2" + drRowCtr);
+	newNode.children[7].children[0].setAttribute("id", "dr_jnl_vat" + drRowCtr);
 	// update the total for VAT amount
 	x = document.getElementById("dr_total_vat");
-	x.value = parseFloat(x.value) + parseFloat(y);
+	z = parseFloat(x.value) + parseFloat(y);
+	x.value = z.toFixed(2);
 
-	x = document.getElementById("journal_net2");
+	x = document.getElementById("dr_journal_net");
 	y = x.value;
 	newNode.children[8].children[0].setAttribute("value", x.value);
 	x.value = "0.00";
-	newNode.children[8].children[0].setAttribute("id", "jnl_net2" + drRowCtr);
+	newNode.children[8].children[0].setAttribute("id", "dr_jnl_net" + drRowCtr);
 	// update the total for NET amount
 	x = document.getElementById("dr_total_net");
-	x.value = parseFloat(x.value) + parseFloat(y);	
+	z = parseFloat(x.value) + parseFloat(y);	
+	x.value = z.toFixed(2);
 	
-	x = document.getElementById("journal_ref_doc2");
+	x = document.getElementById("dr_journal_ref_doc");
 	y = x.value;
 	newNode.children[9].children[0].setAttribute("value", x.options[x.selectedIndex].innerHTML);
 	newNode.children[9].children[2].setAttribute("value", x.options[x.selectedIndex].value);
 	x.selectedIndex = 0;
-	newNode.children[9].children[0].setAttribute("id", "jnl_ref_doc2" + drRowCtr);
+	newNode.children[9].children[0].setAttribute("id", "dr_jnl_ref_doc" + drRowCtr);
 	
-	newNode.children[10].children[0].setAttribute("id", "delDebitBtn" + drRowCtr);
+	newNode.children[10].children[0].setAttribute("id", "drDelDebitBtn" + drRowCtr);
 	// attach the new node to the parent node
 	targetNode.parentNode.appendChild(newNode);
 	newNode.style.display = "table-row";  // make the node visible
@@ -876,10 +942,17 @@ function delDebitRow(event) {
 	var dr_net = event.currentTarget.parentNode.previousElementSibling.previousElementSibling.children[0].value;  // value of NET amount
 
 	// update the debit totals
-	document.getElementById("dr_total_amt").value = parseFloat(document.getElementById("dr_total_amt").value) - parseFloat(dr_amt);
-	document.getElementById("dr_total_wtax").value = parseFloat(document.getElementById("dr_total_wtax").value) - parseFloat(dr_wtax);
-	document.getElementById("dr_total_vat").value = parseFloat(document.getElementById("dr_total_vat").value) - parseFloat(dr_vat);
-	document.getElementById("dr_total_net").value = parseFloat(document.getElementById("dr_total_net").value) - parseFloat(dr_net);
+	var tmpAmount = parseFloat(document.getElementById("dr_total_amt").value) - parseFloat(dr_amt);
+	document.getElementById("dr_total_amt").value = tmpAmount.toFixed(2);
+	
+	tmpAmount = parseFloat(document.getElementById("dr_total_wtax").value) - parseFloat(dr_wtax);
+	document.getElementById("dr_total_wtax").value = tmpAmount.toFixed(2);
+	
+	tmpAmount = parseFloat(document.getElementById("dr_total_vat").value) - parseFloat(dr_vat);
+	document.getElementById("dr_total_vat").value = tmpAmount.toFixed(2);
+	
+	tmpAmount = parseFloat(document.getElementById("dr_total_net").value) - parseFloat(dr_net);
+	document.getElementById("dr_total_net").value = tmpAmount.toFixed(2);
 	
 	// remove the debit row entry
 	var targetChild = document.getElementById(event.currentTarget.parentNode.parentNode.id);
@@ -897,23 +970,29 @@ function delDebitRow(event) {
 function computeWTAX(vOption) {
 	if (vOption =="CREDIT") {
 		
-		if (isNaN(document.getElementById("journal_amt").value) || (parseFloat(document.getElementById("journal_amt").value) == 0)) {
-			alert("Please enter the journal amount");
-			document.getElementById("journal_amt").select();
-			document.getElementById("journal_amt").focus();
+		if (isNaN(document.getElementById("cr_journal_amt").value)) {
+			alert("Please enter the journal amount to credit");
+			document.getElementById("cr_journal_amt").value = "";
+			document.getElementById("cr_journal_amt").focus();
 			return false;
 		}
-		var vIndex = document.getElementById("journal_wtax_type").selectedIndex;
-		var wtaxrate = parseFloat(document.getElementById("journal_wtax_type").options[vIndex].value);
-		var jnlamt = document.getElementById("journal_amt").value;
+		if (parseFloat(document.getElementById("cr_journal_amt").value) == 0) {
+			alert("Please enter a non-zero value for the credit journal amount");
+			document.getElementById("cr_journal_amt").value = "";
+			document.getElementById("cr_journal_amt").focus();
+			return false;
+		}
+		var vIndex = document.getElementById("cr_journal_wtax_type").selectedIndex;
+		var wtaxrate = parseFloat(document.getElementById("cr_journal_wtax_type").options[vIndex].value);
+		var jnlamt = document.getElementById("cr_journal_amt").value;
 		if (wtaxrate > 0) {
 			var wtaxamount = jnlamt * (wtaxrate / 100);
 		} else {
 			var wtaxamount = 0;
 		}
-		document.getElementById("journal_wtax").value = wtaxamount.toFixed(2);
-		vIndex = document.getElementById("journal_vat_type").selectedIndex;
-		var vatrate = document.getElementById("journal_vat_type").options[vIndex].value;
+		document.getElementById("cr_journal_wtax").value = wtaxamount.toFixed(2);
+		vIndex = document.getElementById("cr_journal_vat_type").selectedIndex;
+		var vatrate = document.getElementById("cr_journal_vat_type").options[vIndex].value;
 		if (vatrate == "EXEMPT") {
 			var vatamount = 0;
 		} else if (vatrate == "NONVAT") {
@@ -921,29 +1000,35 @@ function computeWTAX(vOption) {
 		} else { // VATREG
 			var vatamount = jnlamt / 1.12 * 0.12;
 		}
-		document.getElementById("journal_vat").value = vatamount.toFixed(2);
+		document.getElementById("cr_journal_vat").value = vatamount.toFixed(2);
 		var netamount = jnlamt - wtaxamount - vatamount;
-		document.getElementById("journal_net").value = netamount.toFixed(2);
+		document.getElementById("cr_journal_net").value = netamount.toFixed(2);
 
 	} else {  // DEBIT
 	
-		if (isNaN(document.getElementById("journal_amt2").value) || (parseFloat(document.getElementById("journal_amt2").value) == 0)) {
-			alert("Please enter the journal amount");
-			document.getElementById("journal_amt2").select();
-			document.getElementById("journal_amt2").focus();
+		if (isNaN(document.getElementById("dr_journal_amt").value)) {
+			alert("Please enter the journal amount to debit");
+			document.getElementById("dr_journal_amt").value = "";
+			document.getElementById("dr_journal_amt").focus();
 			return false;
 		}
-		var vIndex = document.getElementById("journal_wtax_type2").selectedIndex;
-		var wtaxrate = parseFloat(document.getElementById("journal_wtax_type2").options[vIndex].value);
-		var jnlamt = document.getElementById("journal_amt2").value;
+		if (parseFloat(document.getElementById("dr_journal_amt").value) == 0) {
+			alert("Please enter a non-zero value for the debit journal amount");
+			document.getElementById("dr_journal_amt").value = "";
+			document.getElementById("dr_journal_amt").focus();
+			return false;
+		}
+		var vIndex = document.getElementById("dr_journal_wtax_type").selectedIndex;
+		var wtaxrate = parseFloat(document.getElementById("dr_journal_wtax_type").options[vIndex].value);
+		var jnlamt = document.getElementById("dr_journal_amt").value;
 		if (wtaxrate > 0) {
 			var wtaxamount = jnlamt * (wtaxrate / 100);
 		} else {
 			var wtaxamount = 0;
 		}
-		document.getElementById("journal_wtax2").value = wtaxamount.toFixed(2);
-		vIndex = document.getElementById("journal_vat_type2").selectedIndex;
-		var vatrate = document.getElementById("journal_vat_type2").options[vIndex].value;
+		document.getElementById("dr_journal_wtax").value = wtaxamount.toFixed(2);
+		vIndex = document.getElementById("dr_journal_vat_type").selectedIndex;
+		var vatrate = document.getElementById("dr_journal_vat_type").options[vIndex].value;
 		if (vatrate == "EXEMPT") {
 			var vatamount = 0;
 		} else if (vatrate == "NONVAT") {
@@ -951,9 +1036,9 @@ function computeWTAX(vOption) {
 		} else { // VATREG
 			var vatamount = jnlamt / 1.12 * 0.12;
 		}
-		document.getElementById("journal_vat2").value = vatamount.toFixed(2);
+		document.getElementById("dr_journal_vat").value = vatamount.toFixed(2);
 		var netamount = jnlamt - wtaxamount - vatamount;
-		document.getElementById("journal_net2").value = netamount.toFixed(2);
+		document.getElementById("dr_journal_net").value = netamount.toFixed(2);
 	
 	}
 }
@@ -963,23 +1048,29 @@ function computeWTAX(vOption) {
 function computeVAT(vOption) {
 	if (vOption =="CREDIT") {
 
-		if (isNaN(document.getElementById("journal_amt").value) || (parseFloat(document.getElementById("journal_amt").value) == 0)) {
-			alert("Please enter the journal amount");
-			document.getElementById("journal_amt").select();
-			document.getElementById("journal_amt").focus();
+		if (isNaN(document.getElementById("cr_journal_amt").value)) {
+			alert("Please enter the journal amount to credit");
+			document.getElementById("cr_journal_amt").value = "";
+			document.getElementById("cr_journal_amt").focus();
 			return false;
 		}
-		var vIndex = document.getElementById("journal_wtax_type").selectedIndex;
-		var wtaxrate = parseFloat(document.getElementById("journal_wtax_type").options[vIndex].value);
-		var jnlamt = document.getElementById("journal_amt").value;
+		if (parseFloat(document.getElementById("cr_journal_amt").value) == 0) {
+			alert("Please enter a non-zero amount in the credit journal amount");
+			document.getElementById("cr_journal_amt").value = "";
+			document.getElementById("cr_journal_amt").focus();
+			return false;
+		}
+		var vIndex = document.getElementById("cr_journal_wtax_type").selectedIndex;
+		var wtaxrate = parseFloat(document.getElementById("cr_journal_wtax_type").options[vIndex].value);
+		var jnlamt = document.getElementById("cr_journal_amt").value;
 		if (wtaxrate > 0) {
 			var wtaxamount = jnlamt * (wtaxrate / 100);
 		} else {
 			var wtaxamount = 0;
 		}
-		document.getElementById("journal_wtax").value = wtaxamount.toFixed(2);
-		vIndex = document.getElementById("journal_vat_type").selectedIndex;
-		var vatrate = document.getElementById("journal_vat_type").options[vIndex].value;
+		document.getElementById("cr_journal_wtax").value = wtaxamount.toFixed(2);
+		vIndex = document.getElementById("cr_journal_vat_type").selectedIndex;
+		var vatrate = document.getElementById("cr_journal_vat_type").options[vIndex].value;
 		if (vatrate == "EXEMPT") {
 			var vatamount = 0;
 		} else if (vatrate == "NONVAT") {
@@ -987,29 +1078,35 @@ function computeVAT(vOption) {
 		} else { // VATREG
 			var vatamount = jnlamt / 1.12 * 0.12;
 		}
-		document.getElementById("journal_vat").value = vatamount.toFixed(2);
+		document.getElementById("cr_journal_vat").value = vatamount.toFixed(2);
 		var netamount = jnlamt - wtaxamount - vatamount;
-		document.getElementById("journal_net").value = netamount.toFixed(2);
+		document.getElementById("cr_journal_net").value = netamount.toFixed(2);
 		
 	} else {  // DEBIT
 		
-		if (isNaN(document.getElementById("journal_amt2").value) || (parseFloat(document.getElementById("journal_amt2").value) == 0)) {
-			alert("Please enter the journal amount");
-			document.getElementById("journal_amt2").select();
-			document.getElementById("journal_amt2").focus();
+		if (isNaN(document.getElementById("dr_journal_amt").value)) {
+			alert("Please enter the journal amount to debit");
+			document.getElementById("dr_journal_amt").value = "";
+			document.getElementById("dr_journal_amt").focus();
 			return false;
 		}
-		var vIndex = document.getElementById("journal_wtax_type2").selectedIndex;
-		var wtaxrate = parseFloat(document.getElementById("journal_wtax_type2").options[vIndex].value);
-		var jnlamt = document.getElementById("journal_amt2").value;
+		if (parseFloat(document.getElementById("dr_journal_amt").value) == 0) {
+			alert("Please enter a non-zero amount in the debit journal amount");
+			document.getElementById("dr_journal_amt").value = "";
+			document.getElementById("dr_journal_amt").focus();
+			return false;
+		}
+		var vIndex = document.getElementById("dr_journal_wtax_type").selectedIndex;
+		var wtaxrate = parseFloat(document.getElementById("dr_journal_wtax_type").options[vIndex].value);
+		var jnlamt = document.getElementById("dr_journal_amt").value;
 		if (wtaxrate > 0) {
 			var wtaxamount = jnlamt * (wtaxrate / 100);
 		} else {
 			var wtaxamount = 0;
 		}
-		document.getElementById("journal_wtax2").value = wtaxamount.toFixed(2);
-		vIndex = document.getElementById("journal_vat_type2").selectedIndex;
-		var vatrate = document.getElementById("journal_vat_type2").options[vIndex].value;
+		document.getElementById("dr_journal_wtax").value = wtaxamount.toFixed(2);
+		vIndex = document.getElementById("dr_journal_vat_type").selectedIndex;
+		var vatrate = document.getElementById("dr_journal_vat_type").options[vIndex].value;
 		if (vatrate == "EXEMPT") {
 			var vatamount = 0;
 		} else if (vatrate == "NONVAT") {
@@ -1017,11 +1114,80 @@ function computeVAT(vOption) {
 		} else { // VATREG
 			var vatamount = jnlamt / 1.12 * 0.12;
 		}
-		document.getElementById("journal_vat2").value = vatamount.toFixed(2);
+		document.getElementById("dr_journal_vat").value = vatamount.toFixed(2);
 		var netamount = jnlamt - wtaxamount - vatamount;
-		document.getElementById("journal_net2").value = netamount.toFixed(2);
+		document.getElementById("dr_journal_net").value = netamount.toFixed(2);
 
 	}
 	
 }
+
+//==================================================================================================
+
+function checkinput(e) {
+	var keynum;
+	if (window.event) {  // for Internet Explorer
+		keynum = e.keyCode;
+	} else {  // other browsers
+		keynum = e.which;
+	}
+	// alert(keynum);
+	if (keynum < 48 && (keynum > 57 || keynum < 65) && (keynum > 90 || keynum < 97) && keynum > 122)  {
+		e.keyCode = 0;
+	}
+	
+}
+
+//==================================================================================================
+
+function showRefIdHint(str) {
+	
+	// This is used with LIVESEARCH.PHP
+	
+	if (str.length==0) { 
+		document.getElementById("livesearch").innerHTML="";
+		document.getElementById("livesearch").style.border="0px";
+		return;
+	}
+	if (window.XMLHttpRequest) {
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		var xmlhttp = new XMLHttpRequest();
+	} else {  // code for IE6, IE5
+		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function() {
+		if (this.readyState==4 && this.status==200) {
+			document.getElementById("livesearch").innerHTML=this.responseText;
+			document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+		}
+	}
+	xmlhttp.open("GET","../model/livesearch.php?q="+str,true);
+	xmlhttp.send();
+}
+
+
+//==================================================================================================
+
+function journalSearch(str) {
+	
+	// This is used with JOURNALSEARCH.PHP
+	if (window.XMLHttpRequest) {
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		var xmlhttp = new XMLHttpRequest();
+	} else {  // code for IE6, IE5
+		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function() {
+		if (this.readyState==4 && this.status==200) {
+			document.getElementById("journal-entry-selection").innerHTML=this.responseText;
+		}
+	}
+	xmlhttp.open("GET","../model/journalsearch.php?q="+str,true);
+	xmlhttp.send();
+}
+
+//==================================================================================================
+
+
+
 

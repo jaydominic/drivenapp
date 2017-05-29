@@ -100,39 +100,90 @@ switch ($_REQUEST['calling_page']) {
 	
 	case "gen_journal_entry.php":
 		
+		$called_module = "update_gen_journal.php";
+		
 		if (!isset($_REQUEST['operation'])) {
 			
 			echo "ERROR: " . $thisPage . " -> No data operation specified";
 			exit();
 			
 		} else { // INSERT
-			/*
-			 $userdata = array(
-					'operation' => $_REQUEST['operation'], 'json' => $_REQUEST['json'], 'calling_page' => $_REQUEST['calling_page'],
-					
-					'journal_reference_id' => $_REQUEST['journal_reference_id'], 'journal_entry_date' => $_REQUEST['journal_entry_date'], 
-					'journal_period' => $_REQUEST['journal_period'], 'journal_posting_date' => $_REQUEST['journal_posting_date'],
-					'journal_txn_type' => $_REQUEST['journal_txn_type'], 'journal_gen_desc' => $_REQUEST['journal_gen_desc'], 
-					'journal_txn_class' => $_REQUEST['journal_txn_class'],
-					
-					'parent_acct' => $_REQUEST['parent_acct'][0], 'sub_acct' => $_REQUEST['sub_acct'][0], 
-					'jnl_details' => $_REQUEST['jnl_details'], 'jnl_amt' => $_REQUEST['jnl_amt'],
-					'jnl_wtax_type_opt' => $_REQUEST['jnl_wtax_type_opt'], 'jnl_wtax' => $_REQUEST['jnl_wtax'],
-					'jnl_vat_type_opt' => $_REQUEST['jnl_vat_type_opt'], 'jnl_vat' => $_REQUEST['jnl_vat'],
-					'jnl_net' => $_REQUEST['jnl_net'], 'jnl_ref_doc_opt' => $_REQUEST['jnl_ref_doc_opt'], 
-					
-					'parent_acct2' => $_REQUEST['parent_acct2'], 'sub_acct2' => $_REQUEST['sub_acct2'],
-					'jnl_details2' => $_REQUEST['jnl_details2'], 'jnl_amt2' => $_REQUEST['jnl_amt2'], 
-					'jnl_wtax_type_opt2' => $_REQUEST['jnl_wtax_type_opt2'], 'jnl_wtax2' => $_REQUEST['jnl_wtax2'],
-					'jnl_vat_type_opt2' => $_REQUEST['jnl_vat_type_opt2'], 'jnl_vat2' => $_REQUEST['jnl_vat2'], 
-					'jnl_net2' => $_REQUEST['jnl_net2'], 'jnl_ref_doc_opt2' => $_REQUEST['jnl_ref_doc_opt2']
-			);
-			*/
-			echo "count=" . count($_REQUEST['parent_acct']);
-			// var_dump($userdata);
-			exit();
 			
-			// $result = update_user_acct($dbconn, $_REQUEST['operation'], $_REQUEST['user_id_selected'], $userdata);
+			// put the header journal data into the 1st array
+			if (isset($_REQUEST['journal_reference_id'])) {
+				
+				// convert the date format from mm-dd-yyyy into yyyy-mm-dd
+				$journal_entry_date = substr($_REQUEST['journal_entry_date'], 6, 4) . "-" . substr($_REQUEST['journal_entry_date'], 0, 5);
+				$journal_period = substr($_REQUEST['journal_period'], 6, 4) . "-" . substr($_REQUEST['journal_period'], 0, 5);
+				$journal_posting_date = substr($_REQUEST['journal_posting_date'], 6, 4) . "-" . substr($_REQUEST['journal_posting_date'], 0, 5);
+				
+				$journal_entry_date = date_format(date_create($journal_entry_date), "Y-m-d");
+				$journal_period = date_format(date_create($journal_period), "Y-m-d");
+				$journal_posting_date = date_format(date_create($journal_posting_date), "Y-m-d");
+
+				$journalheader = array('journal_ref_id' => $_REQUEST['journal_reference_id'], 
+						'journal_entry_date' => $journal_entry_date,
+						'journal_period' => $journal_period, 
+						'journal_posting_date' => $journal_posting_date,
+						'journal_txn_type' => $_REQUEST['journal_txn_type'], 
+						'journal_gen_desc' => $_REQUEST['journal_gen_desc'],
+						'journal_txn_class' => $_REQUEST['journal_txn_class'],
+						'journal_dr_total_amt' => $_REQUEST['dr_total_amt'],
+						'journal_dr_total_wtax' => $_REQUEST['dr_total_wtax'],
+						'journal_dr_total_vat' => $_REQUEST['dr_total_vat'],
+						'journal_dr_total_net' => $_REQUEST['dr_total_net'],
+						'journal_cr_total_amt' => $_REQUEST['cr_total_amt'],
+						'journal_cr_total_wtax' => $_REQUEST['cr_total_wtax'],
+						'journal_cr_total_vat' => $_REQUEST['cr_total_vat'],
+						'journal_cr_total_net' => $_REQUEST['cr_total_net'],
+						'journal_credit_rows' => $_REQUEST['creditRowCtr'],
+						'journal_debit_rows' => $_REQUEST['debitRowCtr']);
+				
+			} else {
+				error_log("header=null", 0);
+				$result = false;
+			}
+
+			// put the multi-row credit data into the 2nd array
+			if (isset($_REQUEST['cr_parent_acct'])) {
+
+				$creditdata = array('cr_parent_acct' => $_REQUEST['cr_parent_acct'],
+						'cr_sub_acct' => $_REQUEST['cr_sub_acct'],
+						'cr_coa_id' => $_REQUEST['cr_coa_id'],
+						'cr_jnl_details' => $_REQUEST['cr_jnl_details'],
+						'cr_jnl_amt' => $_REQUEST['cr_jnl_amt'],
+						'cr_jnl_wtax_type_opt' => $_REQUEST['cr_jnl_wtax_type_opt'],
+						'cr_jnl_wtax' => $_REQUEST['cr_jnl_wtax'],
+						'cr_jnl_vat_type_opt' => $_REQUEST['cr_jnl_vat_type_opt'],
+						'cr_jnl_vat' => $_REQUEST['cr_jnl_vat'],
+						'cr_jnl_net' => $_REQUEST['cr_jnl_net'],
+						'cr_jnl_ref_doc_opt' => $_REQUEST['cr_jnl_ref_doc_opt']);
+			} else {
+				error_log("credit=null", 0);
+				$result = false;
+			}
+			
+			// put the multi-row debit data into the 3rd array
+			if (isset($_REQUEST['dr_parent_acct'])) {
+
+				$debitdata = array('dr_parent_acct' => $_REQUEST['dr_parent_acct'],
+						'dr_sub_acct' => $_REQUEST['dr_sub_acct'],
+						'dr_coa_id' => $_REQUEST['dr_coa_id'],
+						'dr_jnl_details' => $_REQUEST['dr_jnl_details'],
+						'dr_jnl_amt' => $_REQUEST['dr_jnl_amt'],
+						'dr_jnl_wtax_type_opt' => $_REQUEST['dr_jnl_wtax_type_opt'],
+						'dr_jnl_wtax' => $_REQUEST['dr_jnl_wtax'],
+						'dr_jnl_vat_type_opt' => $_REQUEST['dr_jnl_vat_type_opt'],
+						'dr_jnl_vat' => $_REQUEST['dr_jnl_vat'],
+						'dr_jnl_net' => $_REQUEST['dr_jnl_net'],
+						'dr_jnl_ref_doc_opt' => $_REQUEST['dr_jnl_ref_doc_opt']);
+			} else {
+				error_log("debit=null", 0);
+				$result = false;
+			}
+
+			$result = update_gen_journal($dbconn, $_REQUEST['operation'], $login_id, $journalheader, $creditdata, $debitdata);
+			break;
 		}
 	default:
 		
@@ -141,17 +192,23 @@ switch ($_REQUEST['calling_page']) {
 
 if ($result == false) {
 	// something went wrong with the update
-	error_log("UpdateControl.php:  Something went wrong at " . $called_module, 0);
-
+	error_log($thisPage . ":  Something went wrong at " . $called_module, 0);
+	$error_msg = "Journal Entry save operation was unsuccessful.";
+	$error_msg = urlencode($error_msg);
+	
 } else {
 
 	// OK!
-	error_log("UpdateControl.php: " . $called_module . " return " . $result . ": Returning to " . $_REQUEST['calling_page'], 0);
-
+	error_log($thisPage . ": " . $called_module . " returned " . $result . ": Returning to " . $_REQUEST['calling_page'], 0);
+	$error_msg = "Journal Entry successfully saved.";
+	$error_msg = urlencode($error_msg);
 }
 
 ?>
-<script type='text/javascript'>gotoURL('../views/<?php echo $_REQUEST['calling_page'] ?>')</script>
+
+<script type='text/javascript'>gotoURL("../views/<?php echo $_REQUEST['calling_page'] ?>?error_msg=<?php echo $error_msg ?>")</script>
 </form>
 </body>
 </html>
+
+

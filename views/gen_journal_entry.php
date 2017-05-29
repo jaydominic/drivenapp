@@ -298,14 +298,14 @@ if ((instring($jsonstr->str_menu_codes, $page_menu_code) == false) && ($jsonstr-
 									<tfoot class="main-sub-title2">
 										<tr>
 											<td colspan="3" class="main-body-text-right2">Debit Entry Totals:</td>
-											<td style="align: center;"><input id="dr_total_amt" class="input-amount" value="0.00" readOnly></td>
+											<td style="align: center;"><input name="dr_total_amt" id="dr_total_amt" class="input-amount" value="0.00" readOnly></td>
 											<td>&nbsp;</td>
-											<td style="align: center;"><input id="dr_total_wtax" class="input-amount" value="0.00" readOnly></td>
+											<td style="align: center;"><input name="dr_total_wtax" id="dr_total_wtax" class="input-amount" value="0.00" readOnly></td>
 											<td>&nbsp;</td>
-											<td style="align: center;"><input id="dr_total_vat" class="input-amount" value="0.00" readOnly></td>
-											<td style="align: center;"><input id="dr_total_net" class="input-amount" value="0.00" readOnly></td>
+											<td style="align: center;"><input name="dr_total_vat" id="dr_total_vat" class="input-amount" value="0.00" readOnly></td>
+											<td style="align: center;"><input name="dr_total_net" id="dr_total_net" class="input-amount" value="0.00" readOnly></td>
 											<td>&nbsp;</td>
-											<td></td>
+											<td>&nbsp;</td>
 										</tr>
 									</tfoot>
 								</table>
@@ -440,14 +440,14 @@ if ((instring($jsonstr->str_menu_codes, $page_menu_code) == false) && ($jsonstr-
 									<tfoot class="main-sub-title2">
 										<tr>
 											<td colspan="3" class="main-body-text-right2">Credit Entry Totals:</td>
-											<td style="align: center;"><input id="cr_total_amt" class="input-amount" value="0.00" readOnly></td>
+											<td style="align: center;"><input name="cr_total_amt" id="cr_total_amt" class="input-amount" value="0.00" readOnly></td>
 											<td>&nbsp;</td>
-											<td style="align: center;"><input id="cr_total_wtax" class="input-amount" value="0.00" readOnly></td>
+											<td style="align: center;"><input name="cr_total_wtax" id="cr_total_wtax" class="input-amount" value="0.00" readOnly></td>
 											<td>&nbsp;</td>
-											<td style="align: center;"><input id="cr_total_vat" class="input-amount" value="0.00" readOnly></td>
-											<td style="align: center;"><input id="cr_total_net" class="input-amount" value="0.00" readOnly></td>
+											<td style="align: center;"><input name="cr_total_vat" id="cr_total_vat" class="input-amount" value="0.00" readOnly></td>
+											<td style="align: center;"><input name="cr_total_net" id="cr_total_net" class="input-amount" value="0.00" readOnly></td>
 											<td>&nbsp;</td>
-											<td></td>
+											<td>&nbsp;</td>
 										</tr>
 									</tfoot>
 								</table>
