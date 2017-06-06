@@ -1,0 +1,495 @@
+[20-May-2017 04:53:35 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[20-May-2017 04:53:35 UTC] log_session():  START
+[20-May-2017 04:53:35 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[20-May-2017 04:53:35 UTC] log_session():  END
+[20-May-2017 04:53:37 UTC] menucontrol.php:  redirecting to menu A0008
+[20-May-2017 04:56:11 UTC] updatecontrol.php:  START
+[20-May-2017 04:56:11 UTC] updatecontrol.php:  calling_page==gen_journal_entry.php
+[20-May-2017 04:56:11 UTC] updatecontrol.php:  operation==INSERT
+[20-May-2017 04:56:11 UTC] update_gen_journal.php:  START
+[20-May-2017 04:56:11 UTC] update_gen_journal.php->A
+[20-May-2017 04:56:11 UTC] update_gen_journal.php->B
+[20-May-2017 04:56:11 UTC] update_gen_journal.php->C
+[20-May-2017 04:56:11 UTC] update_gen_journal.php->F
+[20-May-2017 04:56:11 UTC] update_gen_journal.php->G:creditRowCtr=3
+[20-May-2017 04:56:11 UTC] update_gen_journal.php->: skipping record->G: i=0
+[20-May-2017 04:56:11 UTC] update_gen_journal.php->H(1)
+[20-May-2017 04:56:11 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 04:56:11 UTC] update_gen_journal.php: execute()->I(1)
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->J
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->H(2)
+[20-May-2017 04:56:12 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 04:56:12 UTC] update_gen_journal.php: execute()->I(2)
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->J
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->H(3)
+[20-May-2017 04:56:12 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 04:56:12 UTC] update_gen_journal.php: execute()->I(3)
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->J
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->M
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->N:debitRowCtr=2
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->O: increment i=0
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->P: increment i=1
+[20-May-2017 04:56:12 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 04:56:12 UTC] update_gen_journal.php: execute()->Q(1)
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->R
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->P: increment i=2
+[20-May-2017 04:56:12 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 04:56:12 UTC] update_gen_journal.php: execute()->Q(2)
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->R
+[20-May-2017 04:56:12 UTC] update_gen_journal.php->S
+[20-May-2017 04:56:12 UTC] updatecontrol.php: update_gen_journal.php returned 1: Returning to gen_journal_entry.php
+[20-May-2017 06:08:28 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[20-May-2017 06:08:28 UTC] log_session():  START
+[20-May-2017 06:08:28 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[20-May-2017 06:08:28 UTC] log_session():  END
+[20-May-2017 06:08:32 UTC] menucontrol.php:  redirecting to menu A0008
+[20-May-2017 06:19:18 UTC] updatecontrol.php:  START
+[20-May-2017 06:19:18 UTC] updatecontrol.php:  calling_page==gen_journal_entry.php
+[20-May-2017 06:19:18 UTC] updatecontrol.php:  operation==INSERT
+[20-May-2017 06:19:18 UTC] update_gen_journal.php:  START
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->A
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->B
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->C
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->F
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->G:creditRowCtr=1
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->: skipping record->G: i=0
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->H(1)
+[20-May-2017 06:19:18 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 06:19:18 UTC] update_gen_journal.php: execute()->I(1)
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->J
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->M
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->N:debitRowCtr=1
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->O: increment i=0
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->P: increment i=1
+[20-May-2017 06:19:18 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 06:19:18 UTC] update_gen_journal.php: execute()->Q(1)
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->R
+[20-May-2017 06:19:18 UTC] update_gen_journal.php->S
+[20-May-2017 06:19:18 UTC] updatecontrol.php: update_gen_journal.php returned 1: Returning to gen_journal_entry.php
+[20-May-2017 07:21:59 UTC] updatecontrol.php:  START
+[20-May-2017 07:21:59 UTC] updatecontrol.php:  calling_page==gen_journal_entry.php
+[20-May-2017 07:21:59 UTC] updatecontrol.php:  operation==INSERT
+[20-May-2017 07:21:59 UTC] update_gen_journal.php:  START
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->A
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->B
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->C
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->F
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->G:creditRowCtr=1
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->: skipping record->G: i=0
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->H(1)
+[20-May-2017 07:21:59 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 07:21:59 UTC] update_gen_journal.php: execute()->I(1)
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->J
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->M
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->N:debitRowCtr=2
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->O: increment i=0
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->P: increment i=1
+[20-May-2017 07:21:59 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 07:21:59 UTC] update_gen_journal.php: execute()->Q(1)
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->R
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->P: increment i=2
+[20-May-2017 07:21:59 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 07:21:59 UTC] update_gen_journal.php: execute()->Q(2)
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->R
+[20-May-2017 07:21:59 UTC] update_gen_journal.php->S
+[20-May-2017 07:21:59 UTC] updatecontrol.php: update_gen_journal.php returned 1: Returning to gen_journal_entry.php
+[20-May-2017 07:26:18 UTC] PHP Notice:  Undefined index: session_id in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\logoff.php on line 6
+[20-May-2017 07:26:18 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\logoff.php on line 56
+[20-May-2017 07:26:37 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[20-May-2017 07:26:38 UTC] log_session():  START
+[20-May-2017 07:26:38 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[20-May-2017 07:26:38 UTC] log_session():  END
+[20-May-2017 07:26:39 UTC] menucontrol.php:  redirecting to menu A0008
+[20-May-2017 07:31:41 UTC] updatecontrol.php:  START
+[20-May-2017 07:31:41 UTC] updatecontrol.php:  calling_page==gen_journal_entry.php
+[20-May-2017 07:31:41 UTC] updatecontrol.php:  operation==INSERT
+[20-May-2017 07:31:41 UTC] update_gen_journal.php:  START
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->A
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->B
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->C
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->F
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->G:creditRowCtr=2
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->: skipping record->G: i=0
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->H(1)
+[20-May-2017 07:31:41 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 07:31:41 UTC] update_gen_journal.php: execute()->I(1)
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->J
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->H(2)
+[20-May-2017 07:31:41 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 07:31:41 UTC] update_gen_journal.php: execute()->I(2)
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->J
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->M
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->N:debitRowCtr=1
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->O: increment i=0
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->P: increment i=1
+[20-May-2017 07:31:41 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 07:31:41 UTC] update_gen_journal.php: execute()->Q(1)
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->R
+[20-May-2017 07:31:41 UTC] update_gen_journal.php->S
+[20-May-2017 07:31:41 UTC] updatecontrol.php: update_gen_journal.php returned 1: Returning to gen_journal_entry.php
+[20-May-2017 07:33:39 UTC] PHP Notice:  Undefined index: session_id in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\logoff.php on line 6
+[20-May-2017 07:33:39 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\logoff.php on line 56
+[20-May-2017 07:33:45 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[20-May-2017 07:33:45 UTC] log_session():  START
+[20-May-2017 07:33:45 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[20-May-2017 07:33:46 UTC] log_session():  END
+[20-May-2017 07:33:47 UTC] menucontrol.php:  redirecting to menu A0008
+[20-May-2017 07:51:45 UTC] menucontrol.php:  redirecting to menu A0008
+[20-May-2017 07:58:46 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[20-May-2017 07:58:46 UTC] log_session():  START
+[20-May-2017 07:58:46 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[20-May-2017 07:58:46 UTC] log_session():  END
+[20-May-2017 07:58:47 UTC] menucontrol.php:  redirecting to menu A0008
+[20-May-2017 08:01:25 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[20-May-2017 08:01:25 UTC] log_session():  START
+[20-May-2017 08:01:25 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[20-May-2017 08:01:25 UTC] log_session():  END
+[20-May-2017 08:01:27 UTC] menucontrol.php:  redirecting to menu A0008
+[20-May-2017 08:18:25 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[20-May-2017 08:18:25 UTC] log_session():  START
+[20-May-2017 08:18:25 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[20-May-2017 08:18:25 UTC] log_session():  END
+[20-May-2017 08:18:29 UTC] menucontrol.php:  redirecting to menu A0008
+[20-May-2017 08:20:16 UTC] updatecontrol.php:  START
+[20-May-2017 08:20:16 UTC] updatecontrol.php:  calling_page==gen_journal_entry.php
+[20-May-2017 08:20:16 UTC] updatecontrol.php:  operation==INSERT
+[20-May-2017 08:20:16 UTC] update_gen_journal.php:  START
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->A
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->B
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->C
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->F
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->G:creditRowCtr=2
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->: skipping record->G: i=0
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->H(1)
+[20-May-2017 08:20:16 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 08:20:16 UTC] update_gen_journal.php: execute()->I(1)
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->J
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->H(2)
+[20-May-2017 08:20:16 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 08:20:16 UTC] update_gen_journal.php: execute()->I(2)
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->J
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->M
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->N:debitRowCtr=1
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->O: increment i=0
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->P: increment i=1
+[20-May-2017 08:20:16 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 08:20:16 UTC] update_gen_journal.php: execute()->Q(1)
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->R
+[20-May-2017 08:20:16 UTC] update_gen_journal.php->S
+[20-May-2017 08:20:16 UTC] updatecontrol.php: update_gen_journal.php returned 1: Returning to gen_journal_entry.php
+[20-May-2017 08:30:42 UTC] updatecontrol.php:  START
+[20-May-2017 08:30:42 UTC] updatecontrol.php:  calling_page==gen_journal_entry.php
+[20-May-2017 08:30:42 UTC] updatecontrol.php:  operation==INSERT
+[20-May-2017 08:30:42 UTC] update_gen_journal.php:  START
+[20-May-2017 08:30:42 UTC] update_gen_journal.php->A
+[20-May-2017 08:30:42 UTC] update_gen_journal.php->B
+[20-May-2017 08:30:42 UTC] update_gen_journal.php->C
+[20-May-2017 08:30:42 UTC] update_gen_journal.php->F
+[20-May-2017 08:30:42 UTC] update_gen_journal.php->G:creditRowCtr=0
+[20-May-2017 08:30:42 UTC] update_gen_journal.php->: skipping record->G: i=0
+[20-May-2017 08:30:42 UTC] update_gen_journal.php->M
+[20-May-2017 08:30:42 UTC] update_gen_journal.php->N:debitRowCtr=0
+[20-May-2017 08:30:42 UTC] update_gen_journal.php->O: increment i=0
+[20-May-2017 08:30:42 UTC] update_gen_journal.php->S
+[20-May-2017 08:30:42 UTC] updatecontrol.php: update_gen_journal.php returned 1: Returning to gen_journal_entry.php
+[20-May-2017 08:40:24 UTC] menucontrol.php:  redirecting to menu A0008
+[20-May-2017 08:42:09 UTC] updatecontrol.php:  START
+[20-May-2017 08:42:09 UTC] updatecontrol.php:  calling_page==gen_journal_entry.php
+[20-May-2017 08:42:09 UTC] updatecontrol.php:  operation==INSERT
+[20-May-2017 08:42:09 UTC] update_gen_journal.php:  START
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->A
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->B
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->C
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->F
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->G:creditRowCtr=2
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->: skipping record->G: i=0
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->H(1)
+[20-May-2017 08:42:09 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 08:42:09 UTC] update_gen_journal.php: execute()->I(1)
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->J
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->H(2)
+[20-May-2017 08:42:09 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 08:42:09 UTC] update_gen_journal.php: execute()->I(2)
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->J
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->M
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->N:debitRowCtr=1
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->O: increment i=0
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->P: increment i=1
+[20-May-2017 08:42:09 UTC] update_gen_journal.php:bind_param()->D
+[20-May-2017 08:42:09 UTC] update_gen_journal.php: execute()->Q(1)
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->R
+[20-May-2017 08:42:09 UTC] update_gen_journal.php->S
+[20-May-2017 08:42:09 UTC] updatecontrol.php: update_gen_journal.php returned 1: Returning to gen_journal_entry.php
+[20-May-2017 08:54:05 UTC] menucontrol.php:  redirecting to menu A0009
+[20-May-2017 08:54:12 UTC] menucontrol.php:  redirecting to menu A0008
+[20-May-2017 08:54:18 UTC] menucontrol.php:  redirecting to menu A0009
+[20-May-2017 08:55:26 UTC] menucontrol.php:  redirecting to menu A0037
+[20-May-2017 08:55:34 UTC] menucontrol.php:  redirecting to menu A0037
+[20-May-2017 08:55:37 UTC] menucontrol.php:  redirecting to menu A0036
+[20-May-2017 08:55:54 UTC] menucontrol.php:  redirecting to menu A0036
+[20-May-2017 08:55:56 UTC] menucontrol.php:  redirecting to menu A0037
+[20-May-2017 10:18:56 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\logoff.php on line 56
+[20-May-2017 10:19:10 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[20-May-2017 10:19:10 UTC] log_session():  START
+[20-May-2017 10:19:10 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[20-May-2017 10:19:11 UTC] log_session():  END
+[20-May-2017 10:19:18 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\logoff.php on line 56
+[21-May-2017 14:23:37 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[21-May-2017 14:23:37 UTC] log_session():  START
+[21-May-2017 14:23:37 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[21-May-2017 14:23:37 UTC] log_session():  END
+[21-May-2017 14:23:41 UTC] menucontrol.php:  redirecting to menu A0008
+[21-May-2017 14:49:53 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\logoff.php on line 56
+[21-May-2017 14:50:04 UTC] get_user.php:  uname='joan_boncay', pword='driven7711'
+[21-May-2017 14:50:04 UTC] log_session():  START
+[21-May-2017 14:50:04 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[21-May-2017 14:50:04 UTC] log_session():  END
+[21-May-2017 14:50:11 UTC] menucontrol.php:  redirecting to menu A0008
+[21-May-2017 14:50:17 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\logoff.php on line 56
+[21-May-2017 15:32:09 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[21-May-2017 15:32:09 UTC] log_session():  START
+[21-May-2017 15:32:09 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[21-May-2017 15:32:09 UTC] log_session():  END
+[21-May-2017 15:32:12 UTC] menucontrol.php:  redirecting to menu A0008
+[21-May-2017 16:22:18 UTC] menucontrol.php:  redirecting to menu A0009
+[21-May-2017 16:30:16 UTC] menucontrol.php:  redirecting to menu A0008
+[21-May-2017 16:46:29 UTC] menucontrol.php:  redirecting to menu A0009
+[21-May-2017 16:53:16 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[21-May-2017 16:53:16 UTC] log_session():  START
+[21-May-2017 16:53:16 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[21-May-2017 16:53:16 UTC] log_session():  END
+[21-May-2017 16:53:18 UTC] menucontrol.php:  redirecting to menu A0009
+[21-May-2017 19:21:58 UTC] menucontrol.php:  redirecting to menu A0008
+[21-May-2017 19:47:49 UTC] menucontrol.php:  redirecting to menu A0009
+[21-May-2017 19:51:34 UTC] menucontrol.php:  redirecting to menu A0009
+[21-May-2017 19:52:00 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[21-May-2017 19:52:00 UTC] log_session():  START
+[21-May-2017 19:52:00 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[21-May-2017 19:52:00 UTC] log_session():  END
+[21-May-2017 19:52:02 UTC] menucontrol.php:  redirecting to menu A0009
+[21-May-2017 19:53:22 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[21-May-2017 19:53:22 UTC] log_session():  START
+[21-May-2017 19:53:22 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[21-May-2017 19:53:22 UTC] log_session():  END
+[21-May-2017 19:53:24 UTC] menucontrol.php:  redirecting to menu A0009
+[23-May-2017 08:46:49 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[23-May-2017 08:46:49 UTC] log_session():  START
+[23-May-2017 08:46:49 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[23-May-2017 08:46:50 UTC] log_session():  END
+[23-May-2017 08:46:55 UTC] menucontrol.php:  redirecting to menu A0009
+[23-May-2017 09:17:08 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[23-May-2017 09:17:08 UTC] log_session():  START
+[23-May-2017 09:17:08 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[23-May-2017 09:17:09 UTC] log_session():  END
+[23-May-2017 09:17:11 UTC] menucontrol.php:  redirecting to menu A0009
+[23-May-2017 09:45:32 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[23-May-2017 09:45:32 UTC] log_session():  START
+[23-May-2017 09:45:32 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[23-May-2017 09:45:32 UTC] log_session():  END
+[23-May-2017 09:45:35 UTC] menucontrol.php:  redirecting to menu A0009
+[23-May-2017 10:20:53 UTC] menucontrol.php:  redirecting to menu A0008
+[23-May-2017 14:00:15 UTC] menucontrol.php:  redirecting to menu A0008
+[23-May-2017 14:16:32 UTC] updatecontrol.php:  START
+[23-May-2017 14:16:32 UTC] updatecontrol.php:  calling_page==gen_journal_entry.php
+[23-May-2017 14:16:32 UTC] updatecontrol.php:  operation==INSERT
+[23-May-2017 14:16:32 UTC] update_gen_journal.php:  START
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->A
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->B
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->C
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->F
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->G:creditRowCtr=1
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->: skipping record->G: i=0
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->H(1)
+[23-May-2017 14:16:32 UTC] update_gen_journal.php:bind_param()->D
+[23-May-2017 14:16:32 UTC] update_gen_journal.php: execute()->I(1)
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->J
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->M
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->N:debitRowCtr=1
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->O: increment i=0
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->P: increment i=1
+[23-May-2017 14:16:32 UTC] update_gen_journal.php:bind_param()->D
+[23-May-2017 14:16:32 UTC] update_gen_journal.php: execute()->Q(1)
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->R
+[23-May-2017 14:16:32 UTC] update_gen_journal.php->S
+[23-May-2017 14:16:32 UTC] updatecontrol.php: update_gen_journal.php returned 1: Returning to gen_journal_entry.php
+[23-May-2017 14:33:05 UTC] menucontrol.php:  redirecting to menu A0008
+[23-May-2017 14:33:22 UTC] menucontrol.php:  redirecting to menu A0009
+[24-May-2017 08:14:00 UTC] menucontrol.php:  redirecting to menu A0009
+[24-May-2017 17:56:08 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[24-May-2017 17:56:08 UTC] log_session():  START
+[24-May-2017 17:56:08 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[24-May-2017 17:56:09 UTC] log_session():  END
+[24-May-2017 17:56:11 UTC] menucontrol.php:  redirecting to menu A0009
+[25-May-2017 14:39:25 UTC] get_user.php:  uname='root', pword='wqir7865'
+[25-May-2017 14:39:25 UTC] get_user.php:  USER NOT FOUND! Destroying session.
+[25-May-2017 14:39:25 UTC] authenticate.php:  ERROR:  Authentication error occurred.
+[25-May-2017 14:39:31 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[25-May-2017 14:39:31 UTC] log_session():  START
+[25-May-2017 14:39:31 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[25-May-2017 14:39:31 UTC] log_session():  END
+[25-May-2017 14:39:33 UTC] menucontrol.php:  redirecting to menu A0009
+[25-May-2017 16:26:06 UTC] menucontrol.php:  redirecting to menu A0008
+[25-May-2017 17:07:31 UTC] updatecontrol.php:  START
+[25-May-2017 17:07:31 UTC] updatecontrol.php:  calling_page==gen_journal_entry.php
+[25-May-2017 17:07:31 UTC] updatecontrol.php:  operation==INSERT
+[25-May-2017 17:07:31 UTC] PHP Notice:  Undefined index: dr_total_amt in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 133
+[25-May-2017 17:07:31 UTC] PHP Notice:  Undefined index: dr_total_wtax in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 134
+[25-May-2017 17:07:31 UTC] PHP Notice:  Undefined index: dr_total_vat in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 135
+[25-May-2017 17:07:31 UTC] PHP Notice:  Undefined index: dr_total_net in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 136
+[25-May-2017 17:07:31 UTC] PHP Notice:  Undefined index: cr_total_amt in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 137
+[25-May-2017 17:07:31 UTC] PHP Notice:  Undefined index: cr_total_wtax in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 138
+[25-May-2017 17:07:31 UTC] PHP Notice:  Undefined index: cr_total_vat in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 139
+[25-May-2017 17:07:31 UTC] PHP Notice:  Undefined index: cr_total_net in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 140
+[25-May-2017 17:07:31 UTC] update_gen_journal.php:  START
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->A
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->B
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->C
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->F
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->G:creditRowCtr=2
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->: skipping record->G: i=0
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->H(1)
+[25-May-2017 17:07:31 UTC] update_gen_journal.php:bind_param()->D
+[25-May-2017 17:07:31 UTC] update_gen_journal.php: execute()->I(1)
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->J
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->H(2)
+[25-May-2017 17:07:31 UTC] update_gen_journal.php:bind_param()->D
+[25-May-2017 17:07:31 UTC] update_gen_journal.php: execute()->I(2)
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->J
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->M
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->N:debitRowCtr=2
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->O: increment i=0
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->P: increment i=1
+[25-May-2017 17:07:31 UTC] update_gen_journal.php:bind_param()->D
+[25-May-2017 17:07:31 UTC] update_gen_journal.php: execute()->Q(1)
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->R
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->P: increment i=2
+[25-May-2017 17:07:31 UTC] update_gen_journal.php:bind_param()->D
+[25-May-2017 17:07:31 UTC] update_gen_journal.php: execute()->Q(2)
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->R
+[25-May-2017 17:07:31 UTC] update_gen_journal.php->S
+[25-May-2017 17:07:31 UTC] updatecontrol.php: update_gen_journal.php returned 1: Returning to gen_journal_entry.php
+[25-May-2017 17:58:20 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[25-May-2017 17:58:20 UTC] log_session():  START
+[25-May-2017 17:58:20 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[25-May-2017 17:58:20 UTC] log_session():  END
+[25-May-2017 17:58:22 UTC] menucontrol.php:  redirecting to menu A0008
+[26-May-2017 02:23:07 UTC] updatecontrol.php:  START
+[26-May-2017 02:23:07 UTC] updatecontrol.php:  calling_page==gen_journal_entry.php
+[26-May-2017 02:23:07 UTC] updatecontrol.php:  operation==INSERT
+[26-May-2017 02:23:07 UTC] PHP Notice:  Undefined index: dr_total_amt in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 131
+[26-May-2017 02:23:07 UTC] PHP Notice:  Undefined index: dr_total_wtax in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 132
+[26-May-2017 02:23:07 UTC] PHP Notice:  Undefined index: dr_total_vat in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 133
+[26-May-2017 02:23:07 UTC] PHP Notice:  Undefined index: dr_total_net in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 134
+[26-May-2017 02:23:07 UTC] PHP Notice:  Undefined index: cr_total_amt in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 135
+[26-May-2017 02:23:07 UTC] PHP Notice:  Undefined index: cr_total_wtax in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 136
+[26-May-2017 02:23:07 UTC] PHP Notice:  Undefined index: cr_total_vat in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 137
+[26-May-2017 02:23:07 UTC] PHP Notice:  Undefined index: cr_total_net in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\updatecontrol.php on line 138
+[26-May-2017 02:23:07 UTC] update_gen_journal.php:  START
+[26-May-2017 02:23:07 UTC] update_gen_journal.php->A
+[26-May-2017 02:23:07 UTC] update_gen_journal.php->B
+[26-May-2017 02:23:07 UTC] update_gen_journal.php->C
+[26-May-2017 02:23:07 UTC] update_gen_journal.php->F
+[26-May-2017 02:23:07 UTC] update_gen_journal.php->G:creditRowCtr=1
+[26-May-2017 02:23:08 UTC] update_gen_journal.php->: skipping record->G: i=0
+[26-May-2017 02:23:08 UTC] update_gen_journal.php->H(1)
+[26-May-2017 02:23:08 UTC] update_gen_journal.php:bind_param()->D
+[26-May-2017 02:23:08 UTC] update_gen_journal.php: execute()->I(1)
+[26-May-2017 02:23:08 UTC] update_gen_journal.php->J
+[26-May-2017 02:23:08 UTC] update_gen_journal.php->M
+[26-May-2017 02:23:08 UTC] update_gen_journal.php->N:debitRowCtr=2
+[26-May-2017 02:23:08 UTC] update_gen_journal.php->O: increment i=0
+[26-May-2017 02:23:08 UTC] update_gen_journal.php->P: increment i=1
+[26-May-2017 02:23:08 UTC] update_gen_journal.php:bind_param()->D
+[26-May-2017 02:23:08 UTC] update_gen_journal.php: execute()->Q(1)
+[26-May-2017 02:23:08 UTC] update_gen_journal.php->R
+[26-May-2017 02:23:08 UTC] update_gen_journal.php->P: increment i=2
+[26-May-2017 02:23:08 UTC] update_gen_journal.php:bind_param()->D
+[26-May-2017 02:23:08 UTC] update_gen_journal.php: execute()->Q(2)
+[26-May-2017 02:23:08 UTC] update_gen_journal.php->R
+[26-May-2017 02:23:08 UTC] update_gen_journal.php->S
+[26-May-2017 02:23:08 UTC] updatecontrol.php: update_gen_journal.php returned 1: Returning to gen_journal_entry.php
+[29-May-2017 17:49:37 UTC] PHP Notice:  Undefined index: session_id in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\logoff.php on line 6
+[29-May-2017 17:49:37 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\logoff.php on line 56
+[29-May-2017 17:49:44 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[29-May-2017 17:49:44 UTC] log_session():  START
+[29-May-2017 17:49:44 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[29-May-2017 17:49:44 UTC] log_session():  END
+[29-May-2017 17:49:47 UTC] menucontrol.php:  redirecting to menu A0008
+[29-May-2017 17:52:32 UTC] updatecontrol.php:  START
+[29-May-2017 17:52:33 UTC] updatecontrol.php:  calling_page==gen_journal_entry.php
+[29-May-2017 17:52:33 UTC] updatecontrol.php:  operation==INSERT
+[29-May-2017 17:52:33 UTC] update_gen_journal.php:  START
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->A
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->B
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->C
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->F
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->G:creditRowCtr=1
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->: skipping record->G: i=0
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->H(1)
+[29-May-2017 17:52:33 UTC] update_gen_journal.php:bind_param()->D
+[29-May-2017 17:52:33 UTC] update_gen_journal.php: execute()->I(1)
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->J
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->M
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->N:debitRowCtr=2
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->O: increment i=0
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->P: increment i=1
+[29-May-2017 17:52:33 UTC] update_gen_journal.php:bind_param()->D
+[29-May-2017 17:52:33 UTC] update_gen_journal.php: execute()->Q(1)
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->R
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->P: increment i=2
+[29-May-2017 17:52:33 UTC] update_gen_journal.php:bind_param()->D
+[29-May-2017 17:52:33 UTC] update_gen_journal.php: execute()->Q(2)
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->R
+[29-May-2017 17:52:33 UTC] update_gen_journal.php->S
+[29-May-2017 17:52:33 UTC] updatecontrol.php: update_gen_journal.php returned 1: Returning to gen_journal_entry.php
+[29-May-2017 17:53:59 UTC] menucontrol.php:  redirecting to menu A0009
+[29-May-2017 18:03:57 UTC] menucontrol.php:  redirecting to menu A0008
+[29-May-2017 18:07:39 UTC] updatecontrol.php:  START
+[29-May-2017 18:07:39 UTC] updatecontrol.php:  calling_page==gen_journal_entry.php
+[29-May-2017 18:07:39 UTC] updatecontrol.php:  operation==INSERT
+[29-May-2017 18:07:39 UTC] update_gen_journal.php:  START
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->A
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->B
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->C
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->F
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->G:creditRowCtr=2
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->: skipping record->G: i=0
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->H(1)
+[29-May-2017 18:07:39 UTC] update_gen_journal.php:bind_param()->D
+[29-May-2017 18:07:39 UTC] update_gen_journal.php: execute()->I(1)
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->J
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->H(2)
+[29-May-2017 18:07:39 UTC] update_gen_journal.php:bind_param()->D
+[29-May-2017 18:07:39 UTC] update_gen_journal.php: execute()->I(2)
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->J
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->M
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->N:debitRowCtr=3
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->O: increment i=0
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->P: increment i=1
+[29-May-2017 18:07:39 UTC] update_gen_journal.php:bind_param()->D
+[29-May-2017 18:07:39 UTC] update_gen_journal.php: execute()->Q(1)
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->R
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->P: increment i=2
+[29-May-2017 18:07:39 UTC] update_gen_journal.php:bind_param()->D
+[29-May-2017 18:07:39 UTC] update_gen_journal.php: execute()->Q(2)
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->R
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->P: increment i=3
+[29-May-2017 18:07:39 UTC] update_gen_journal.php:bind_param()->D
+[29-May-2017 18:07:39 UTC] update_gen_journal.php: execute()->Q(3)
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->R
+[29-May-2017 18:07:39 UTC] update_gen_journal.php->S
+[29-May-2017 18:07:39 UTC] updatecontrol.php: update_gen_journal.php returned 1: Returning to gen_journal_entry.php
+[29-May-2017 18:07:48 UTC] menucontrol.php:  redirecting to menu A0009
+[29-May-2017 18:09:11 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\logoff.php on line 56
+[30-May-2017 05:53:26 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[30-May-2017 05:53:26 UTC] log_session():  START
+[30-May-2017 05:53:26 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[30-May-2017 05:53:27 UTC] log_session():  END
+[30-May-2017 05:53:32 UTC] menucontrol.php:  redirecting to menu A0009
+[30-May-2017 06:00:58 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in C:\JAY\GoogleDrive\Driven System\webapp\driven-group.com\controller\logoff.php on line 56
+[01-Jun-2017 12:56:55 UTC] get_user.php:  uname='admin', pword='tvsFDTzs711'
+[01-Jun-2017 12:56:55 UTC] log_session():  START
+[01-Jun-2017 12:56:55 UTC] log_session(): SQL=INSERT INTO tbl_login_session (login_session_login_username, login_session_session_id, login_session_remote_ip, login_session_created_ts) VALUES (?, ?, ?, NOW())
+[01-Jun-2017 12:56:55 UTC] log_session():  END
+[01-Jun-2017 12:56:58 UTC] menucontrol.php:  redirecting to menu A0009
+[04-Jun-2017 14:49:27 UTC] menucontrol.php:  redirecting to menu A0009
