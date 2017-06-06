@@ -89,8 +89,8 @@ function update_gen_journal($dbconn, $operation, $login_id, $journalheader, $cre
 				journal_posting_date, journal_txn_type, journal_txn_class, journal_description, 
 				journal_total_credit_amount, journal_total_credit_wtax, journal_total_credit_vat, journal_total_credit_net,
 				journal_total_debit_amount, journal_total_debit_wtax, journal_total_debit_vat, journal_total_debit_net,
-				journal_created_by_login_id, journal_created_ts) 
-				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+				journal_created_by_login_id, journal_created_ts, journal_status) 
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'Saved')";
 		
 		$stmt = $mysqli->prepare($strsql);
 		if ($mysqli->errno <> 0) {

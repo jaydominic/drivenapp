@@ -184,6 +184,21 @@ require_once 'gen_journal_header_list.php';
 				</tr>
 				<!-- END: Journal CREDIT DETAILS section============================================================================= -->
 
+				<!-- START: Journal RETURN FOR REVISION REMARKS section=========================================================================== -->
+				<tr>
+					<td class='main-body-text-left'>
+						<div id='journal-revision-remarks' class='journal-revision-remarks'>
+
+						<!-- This is where the RETURN FOR REVISION REMARKS is going to be displayed -->
+
+						<b>Remarks<b></b> (Required only if returning for revision):<br>
+						<textarea name="jnl_revision_remarks" id="jnl_revision_remarks" rows="5" cols="60"></textarea>
+						
+						</div>
+					</td>
+				</tr>
+				<!-- END: Journal RETURN FOR REVISION REMARKS section============================================================================= -->
+
 				<!-- END: MAIN CONTENT=============================================================================================== -->
 
 			</table>
@@ -193,6 +208,10 @@ require_once 'gen_journal_header_list.php';
 			<table class='main-table'>
 				<tr>
 					<td class='main-title' colspan='5'>
+						<input type="button" value="Validate" id="cmdValidate" class="cmdbutton2" onclick="updateData('<?php echo $thisPage ?>', '<?php echo $targetPage ?>', 'VALIDATE')">
+						&nbsp;&nbsp;
+						<input type="button" value="Revise" id="cmdRevise" class="cmdbutton2" onclick="updateData('<?php echo $thisPage ?>', '<?php echo $targetPage ?>', 'REVISE')">
+						&nbsp;&nbsp;
 						<input type="button" value="Back to Menu" id="cmdMenu"  class="cmdbutton2" onclick="gotoURL('<?php echo $homeURL ?>')">
 					</td>
 				</tr>
@@ -210,50 +229,7 @@ require_once 'gen_journal_header_list.php';
 		<script type='text/javascript' src='js/<?php echo $jsfile2 ?>'></script>
 		<script type='text/javascript'>
 
-		function showJournalDebitDetails(jnl_ref_id) {
-			
-			// Use AJAX to update the credit/debit details section based on the ref_id clicked
-			// This is used with JOURNALSEARCH.PHP
-			if (window.XMLHttpRequest) {
-				// code for IE7+, Firefox, Chrome, Opera, Safari
-				var xmlhttp = new XMLHttpRequest();
-			} else {  // code for IE6, IE5
-				var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			xmlhttp.onreadystatechange=function() {
-				if (this.readyState==4 && this.status==200) {
-					document.getElementById("journal-dr-details-selection").innerHTML=this.responseText;
-				}
-			}
-			xmlhttp.open("GET", "gen_journal_details_list.php?jnl_ref_id="+jnl_ref_id+"&jnl_rec_type=DEBIT", true);
-			xmlhttp.send();
-			
-		}
-
-		function showJournalCreditDetails(jnl_ref_id) {
-			
-			// Use AJAX to update the credit/debit details section based on the ref_id clicked
-			// This is used with JOURNALSEARCH.PHP
-			if (window.XMLHttpRequest) {
-				// code for IE7+, Firefox, Chrome, Opera, Safari
-				var xmlhttp = new XMLHttpRequest();
-			} else {  // code for IE6, IE5
-				var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			xmlhttp.onreadystatechange=function() {
-				if (this.readyState==4 && this.status==200) {
-					document.getElementById("journal-cr-details-selection").innerHTML=this.responseText;
-				}
-			}
-			xmlhttp.open("GET", "gen_journal_details_list.php?jnl_ref_id="+jnl_ref_id+"&jnl_rec_type=CREDIT", true);
-			xmlhttp.send();
-			
-		}
-
-		function resetDebitCreditSection() {
-			document.getElementById("journal-dr-details-selection").innerHTML="";
-			document.getElementById("journal-cr-details-selection").innerHTML="";
-		}
+			<!-- put functions here  -->
 		
 		</script>
 	</body>

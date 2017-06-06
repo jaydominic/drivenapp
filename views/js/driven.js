@@ -189,6 +189,25 @@ function updateData(calling_page, target_url, operation) {
 		}
 	}
 
+	// GEN_JOURNAL_ENTRY.PHP  ===================================================
+	if (calling_page == "gen_journal_validate.php") {
+
+		if (operation == "VALIDATE") {
+			// change the journal_status from "Saved" to "Submitted"
+
+		}
+
+		if (operation == "REVISE") {
+			// make sure there is a value in the remarks field
+			if (!isset(document.getElementById("jnl_revision_remarks").value)) {
+				alert("Please enter your remarks describing what should be revised/corrected.");
+				document.getElementById("jnl_revision_remarks").focus();
+				return false;
+			}
+			// change the journal_status from "Saved" to "Returned For Correction"
+		}
+	}
+			
 	document.getElementById("cmdSubmit").disabled = true;
 	document.getElementById("operation").value = operation;
 	document.getElementById("frmMain").method = "post";
@@ -1168,6 +1187,8 @@ function showRefIdHint(str) {
 
 //==================================================================================================
 
+// This is used with GEN_JOURNAL_VALIDATE.PHP
+
 function journalSearch(str) {
 	
 	// This is used with JOURNALSEARCH.PHP
@@ -1184,6 +1205,51 @@ function journalSearch(str) {
 	}
 	xmlhttp.open("GET","../model/journalsearch.php?q="+str,true);
 	xmlhttp.send();
+}
+
+function showJournalDebitDetails(jnl_ref_id) {
+	
+	// Use AJAX to update the credit/debit details section based on the ref_id clicked
+	// This is used with JOURNALSEARCH.PHP
+	if (window.XMLHttpRequest) {
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		var xmlhttp = new XMLHttpRequest();
+	} else {  // code for IE6, IE5
+		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function() {
+		if (this.readyState==4 && this.status==200) {
+			document.getElementById("journal-dr-details-selection").innerHTML=this.responseText;
+		}
+	}
+	xmlhttp.open("GET", "gen_journal_details_list.php?jnl_ref_id="+jnl_ref_id+"&jnl_rec_type=DEBIT", true);
+	xmlhttp.send();
+	
+}
+
+function showJournalCreditDetails(jnl_ref_id) {
+	
+	// Use AJAX to update the credit/debit details section based on the ref_id clicked
+	// This is used with JOURNALSEARCH.PHP
+	if (window.XMLHttpRequest) {
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		var xmlhttp = new XMLHttpRequest();
+	} else {  // code for IE6, IE5
+		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function() {
+		if (this.readyState==4 && this.status==200) {
+			document.getElementById("journal-cr-details-selection").innerHTML=this.responseText;
+		}
+	}
+	xmlhttp.open("GET", "gen_journal_details_list.php?jnl_ref_id="+jnl_ref_id+"&jnl_rec_type=CREDIT", true);
+	xmlhttp.send();
+	
+}
+
+function resetDebitCreditSection() {
+	document.getElementById("journal-dr-details-selection").innerHTML="";
+	document.getElementById("journal-cr-details-selection").innerHTML="";
 }
 
 //==================================================================================================
